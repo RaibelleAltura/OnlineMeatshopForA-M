@@ -61,7 +61,6 @@ while ($row = $categoryResult->fetch_assoc()) {
     ?>
     <div class="heading">
         <div class="row heading-title">Our Menu</div>
-        <div class="row heading-description">~Discover a feast of flavors with our exciting menu!</div>
     </div>
     <?php foreach ($categories as $category): ?>
         <section id="<?= strtolower($category) ?>">
