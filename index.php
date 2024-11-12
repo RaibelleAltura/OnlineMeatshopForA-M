@@ -131,13 +131,13 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
                         <div class="overlay-content">
                           <h3>PORK</h3>
                           <p>Start your meal with our delicious appetizers that set the tone for a delightful dining experience.</p>
-                          <a href="menu.php#Pork">
+                          <a href="menu.php#pork">
                             <button class="explore-btn">Explore Variety</button></a>
                         </div>
                       </div>
                       <div class="card-bottom">
                         <h3>PORK</h3>
-                        <a href="menu.php#Pork">
+                        <a href="menu.php#pork">
                           <button class="explore-btn">Explore Variety</button></a>
                       </div>
                     </div>
@@ -148,13 +148,13 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
                         <div class="overlay-content">
                           <h3>BEEF</h3>
                           <p>Indulge in our wide variety of pizzas, each crafted with the finest ingredients and baked to perfection.</p>
-                          <a href="menu.php#Beef">
+                          <a href="menu.php#beef">
                             <button class="explore-btn">Explore Variety</button></a>
                         </div>
                       </div>
                       <div class="card-bottom">
                         <h3>BEEF</h3>
-                        <a href="menu.php#Beef">
+                        <a href="menu.php#beef">
                           <button class="explore-btn">Explore Variety</button></a>
                       </div>
                     </div>
@@ -165,13 +165,13 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
                         <div class="overlay-content">
                           <h3>CHICKEN</h3>
                           <p>Savor our juicy burgers, loaded with fresh toppings and bursting with flavor in every bite.</p>
-                          <a href="menu.php#Chicken">
+                          <a href="menu.php#chicken">
                             <button class="explore-btn">Explore Variety</button></a>
                         </div>
                       </div>
                       <div class="card-bottom">
                         <h3>CHICKEN</h3>
-                        <a href="menu.php#Chicken">
+                        <a href="menu.php#chicken">
                           <button class="explore-btn">Explore Variety</button></a>
                       </div>
                     </div>
