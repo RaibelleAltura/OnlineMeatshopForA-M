@@ -10,7 +10,7 @@ body {
 
 .main {
 
-  background-image: url('images/shop.jpg') !important;
+  background-image: url('images/main-bg.png') !important;
   background-size: cover;
   /* Ensures the image covers the whole element */
   background-position: center;

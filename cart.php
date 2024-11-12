@@ -126,7 +126,7 @@ $itemsResult = $stmt->get_result();
           <label for="Cash">Cash</label>
         </div>
         <div>
-          <input type="radio" id="card" name="payment_mode" value="Card" disabled style="cursor: not-allowed;">
+          <input type="radio" id="card" name="payment_mode" value="Card">
           <label for="Card">Card</label>
         </div>
       </div>

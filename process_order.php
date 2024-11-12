@@ -8,6 +8,8 @@ if (!isset($_SESSION['userloggedin']) || $_SESSION['userloggedin'] !== true) {
     exit;
 }
 
+
+
 // Retrieve form data
 $firstName = $_POST['firstName'] ?? '';
 $lastName = $_POST['lastName'] ?? '';
@@ -20,10 +22,15 @@ $total = $_POST['total'] ?? 0;
 $subtotal = $_POST['subtotal'] ?? 0;
 $selectedItems = json_decode($_POST['selected_items'], true) ?? [];
 
-// Ensure the payment mode is not "card"
-if ($paymentMode === 'card') {
-    header('Location: order_review.php');
-    exit;
+// Handle bank transfer proof upload
+$proofOfPayment = null;
+if ($paymentMode === 'Card' && isset($_FILES['proof_of_payment']) && $_FILES['proof_of_payment']['error'] === 0) {
+    $proofDirectory = 'uploads/proofs/';
+    if (!file_exists($proofDirectory)) {
+        mkdir($proofDirectory, 0777, true); // Ensure directory exists
+    }
+    $proofOfPayment = $proofDirectory . basename($_FILES['proof_of_payment']['name']);
+    move_uploaded_file($_FILES['proof_of_payment']['tmp_name'], $proofOfPayment);
 }
 
 // Begin transaction
@@ -85,5 +92,6 @@ try {
     // Rollback transaction in case of error
     $conn->rollback();
     echo 'Error: ' . $e->getMessage();
+    
 }
 ?>

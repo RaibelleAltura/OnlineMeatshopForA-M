@@ -76,6 +76,26 @@ $total = $subtotal + $deliveryFee;
         <input type="hidden" name="order_id" value="<?= $orderId ?>">
         <input type="hidden" name="selected_items" value='<?= json_encode($selectedItems) ?>'>
         <input type="hidden" name="payment_mode" value="<?= htmlspecialchars($_POST['payment_mode']) ?>">
+        
+        <?php if ($_POST['payment_mode'] === 'Card') : ?>
+          <div class="form-group">
+              <label for="bank_account_name">Account Name:</label>
+              <input type="text" class="form-control" id="bank_account_name" name="bank_account_name" required>
+          </div>
+          <div class="form-group">
+              <label for="bank_account_number">Account Number:</label>
+              <input type="text" class="form-control" id="bank_account_number" name="bank_account_number" required>
+          </div>
+          <div class="form-group">
+              <label for="bank_name">Bank Name:</label>
+              <input type="text" class="form-control" id="bank_name" name="bank_name" required>
+          </div>
+          <div class="form-group">
+              <label for="proof_of_payment">Upload Proof of Payment:</label>
+              <input type="file" class="form-control-file" id="proof_of_payment" name="proof_of_payment" accept="image/*" required>
+          </div>
+        <?php endif; ?>
+
         <div class="form-group row">
           <div class="col">
             <label for="firstName">First Name:</label>
@@ -169,12 +189,15 @@ $total = $subtotal + $deliveryFee;
         }
       }
       ?>
+      
 
       </form>
     </div>
 
 
   </div>
+
+  
 
   <?php
 include_once ('footer.html');
