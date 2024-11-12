@@ -118,7 +118,7 @@ include 'sidebar.php';
                     </div>
                   </div>
                   <div class="d-flex flex-row justify-content-end align-items-end">
-                    <span class="badge rounded-pill text-light p-2 mt-2" style="background-color: #fb4a36; "> ₱ <?php echo $item['total_price']; ?></span>
+                    <span class="badge rounded-pill text-light p-2 mt-2" style="background-color: #fb4a36; ">₱ <?php echo $item['total_price']; ?></span>
                   </div>
                 </div>
               </li>

@@ -121,6 +121,7 @@ include 'sidebar.php';
                     <th>Order Status</th>
                     <th>Payment Mode</th>
                     <th>Cancel Reason</th>
+                    <th>Proof of Payment</th>
                     <th>Action</th>
                 </tr>";
         if ($result && $result->num_rows > 0) {
@@ -144,18 +145,25 @@ include 'sidebar.php';
                         break;
                 }
                 echo "<tr>
-                    <td>" . $row['order_id'] . "</td>
-                    <td>" . $row['firstName'] . " " . $row['lastName'] . "</td>
-                    <td>" . $row['phone'] . "</td>
-                    <td>" . '₱ ' . $row['grand_total'] . "</td>
-                    <td><span class='status $statusClass'>" . $row['order_status'] . "</span></td>
-                    <td>" . $row['pmode'] . "</td>
-                    <td>" . ($row['order_status'] == 'Cancelled' ? $row['cancel_reason'] : '-') . "</td>
-                    <td><button id='viewbtn' onclick=\"viewDetails(" . $row['order_id'] . ")\">View Details</button></td>
-                </tr>";
-            }
+                     <td>{$row['order_id']}</td>
+                        <td>" . htmlspecialchars($row['firstName'] . " " . $row['lastName']) . "</td>
+                        <td>" . htmlspecialchars($row['phone']) . "</td>
+                        <td>₱ " . number_format($row['grand_total'], 2) . "</td>
+                        <td><span class='status $statusClass'>" . htmlspecialchars($row['order_status']) . "</span></td>
+                        <td>" . htmlspecialchars($row['pmode']) . "</td>
+                        <td>" . ($row['order_status'] == 'Cancelled' ? htmlspecialchars($row['cancel_reason']) : '-') . "</td>
+                        <td>";
+                    if (!empty($row['proof_of_payment'])) {
+                        echo "<a href='uploads/" . htmlspecialchars($row['proof_of_payment']) . "' target='_blank'>View Proof</a>";
+                    } else {
+                        echo "No proof uploaded";
+                    }
+                    echo "</td>
+                        <td><button id='viewbtn' onclick=\"viewDetails({$row['order_id']})\">View Details</button></td>
+                    </tr>";
+                }
         } else {
-            echo "<tr><td colspan='8' style='text-align: center;'>No Orders Found</td></tr>";
+            echo "<tr><td colspan='9' style='text-align: center;'>No Orders Found</td></tr>";
         }
 
         echo "</table>";
