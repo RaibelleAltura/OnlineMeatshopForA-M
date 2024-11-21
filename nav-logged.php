@@ -336,8 +336,8 @@ $userinfo = get_UserInfo($useremail);
                   Menu
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="menu.php#pork">Pork</a></li>
-                  <li><a class="dropdown-item" href="menu.php#beef">Beef</a></li>
+                <li><a class="dropdown-item" href="menu.php#beef">Beef</a></li>
+                  <li><a class="dropdown-item" href="menu.php#pork">Pork</a></li>
                   <li><a class="dropdown-item" href="menu.php#chicken">Chicken</a></li>
                 </ul>
               </li>

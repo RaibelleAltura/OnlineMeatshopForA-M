@@ -2,14 +2,27 @@
 session_start();
 require 'db_connection.php';
 
-// Check if user is logged in
+// Ensure user is logged in
 if (!isset($_SESSION['userloggedin']) || $_SESSION['userloggedin'] !== true) {
-  header('location:login.php');
-  exit;
+    header('location:login.php');
+    exit;
+}
+
+// Redirect if page is directly accessed without form submission
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: cart.php');
+    exit;
 }
 
 // Get the email from the session
 $email = $_SESSION['email'];
+
+// Safely retrieve POST variables
+$selectedItems = isset($_POST['selected_items']) ? json_decode($_POST['selected_items'], true) : [];
+if (!is_array($selectedItems)) {
+    $selectedItems = []; // Ensure $selectedItems is an array
+}
+$paymentMode = $_POST['payment_mode'] ?? ''; // Payment mode with default fallback
 
 // Fetch user data
 $stmt = $conn->prepare('SELECT * FROM users WHERE email=?');
@@ -24,11 +37,13 @@ $selectedItems = json_decode($_POST['selected_items'], true);
 // Fetch cart items from the database
 $itemDetails = [];
 foreach ($selectedItems as $item) {
-  $stmt = $conn->prepare('SELECT * FROM cart WHERE id=? AND email=?');
-  $stmt->bind_param('is', $item['id'], $email);
-  $stmt->execute();
-  $result = $stmt->get_result();
-  $itemDetails[] = $result->fetch_assoc();
+    if (!empty($item['id'])) { // Validate item ID
+        $stmt = $conn->prepare('SELECT * FROM cart WHERE id=? AND email=?');
+        $stmt->bind_param('is', $item['id'], $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $itemDetails[] = $result->fetch_assoc();
+    }
 }
 
 // Calculate subtotal and total
@@ -39,7 +54,7 @@ foreach ($itemDetails as $item) {
   $itemQuantity = $item['quantity'];
   $subtotal += $itemPrice * $itemQuantity;
 }
-$deliveryFee = ($_POST['payment_mode'] === 'Takeaway') ? 0 : 130;
+$deliveryFee = ($paymentMode === 'Store Pick-Up') ? 0 : 130; // Calculate delivery fee based on payment mode
 $total = $subtotal + $deliveryFee;
 
 
@@ -113,7 +128,7 @@ $total = $subtotal + $deliveryFee;
           </div>
           <div class="col">
             <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($email) ?>" readonly>
+            <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($email ?? '', ENT_QUOTES, 'UTF-8') ?>" readonly>
           </div>
         </div>
         <div class="form-group">
@@ -121,9 +136,20 @@ $total = $subtotal + $deliveryFee;
           <textarea class="form-control" id="order_note" name="order_note" rows="3"></textarea>
         </div>
         <div class="form-group">
-          <label for="address">Address:</label>
-          <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
-        </div>
+    <label for="province">Province (Region 4A - Calabarzon):</label>
+    <select class="form-control" id="province" name="province" required>
+        <option value="">-- Select Province --</option>
+        <option value="Cavite">Cavite</option>
+        <option value="Laguna">Laguna</option>
+        <option value="Rizal">Rizal</option>
+        <option value="Batangas">Batangas</option>
+        <option value="Quezon">Quezon</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="address">Full Address:</label>
+    <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+</div>
 
     </div>
 

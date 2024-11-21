@@ -136,7 +136,7 @@ CREATE TABLE `orders` (
   `lastName` varchar(255) NOT NULL,
   `phone` varchar(10) NOT NULL,
   `address` varchar(200) NOT NULL,
-  `pmode` enum('Cash','Card','Takeaway','') NOT NULL DEFAULT 'Cash',
+  `pmode` enum('Cash','Card','Store Pick-Up','') NOT NULL DEFAULT 'Cash',
   `payment_status` enum('Pending','Successful','Rejected','') NOT NULL DEFAULT 'Pending',
   `sub_total` decimal(10,2) NOT NULL,
   `grand_total` decimal(10,2) NOT NULL,

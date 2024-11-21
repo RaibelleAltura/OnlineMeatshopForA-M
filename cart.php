@@ -23,7 +23,17 @@ $stmt = $conn->prepare('SELECT * FROM cart WHERE email=?');
 $stmt->bind_param('s', $email);
 $stmt->execute();
 $itemsResult = $stmt->get_result();
+
+if ($itemsResult->num_rows == 0) {
+  echo "<script>
+          alert('Your cart is empty! You cannot proceed to checkout.');
+          window.location.href = 'menu.php';
+        </script>";
+  exit;
+}
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -118,12 +128,12 @@ $itemsResult = $stmt->get_result();
       <div class="summary-details payment">
         <p><strong>Payment Method:</strong></p>
         <div>
-          <input type="radio" id="takeaway" name="payment_mode" value="Takeaway" checked>
-          <label for="Takeaway">Takeaway</label>
+          <input type="radio" id="store pick-up" name="payment_mode" value="Store Pick-Up" checked>
+          <label for="Store Pick-Up">Store Pick-Up</label>
         </div>
         <div>
           <input type="radio" id="cash" name="payment_mode" value="Cash">
-          <label for="Cash">Cash</label>
+          <label for="Cash">Cash On Delivery</label>
         </div>
         <div>
           <input type="radio" id="card" name="payment_mode" value="Card">
@@ -190,7 +200,7 @@ $itemsResult = $stmt->get_result();
       // Function to update delivery fee based on payment mode
       function updateDeliveryFee() {
         const selectedPaymentMode = document.querySelector('input[name="payment_mode"]:checked').value;
-        deliveryFee = selectedPaymentMode === 'Takeaway' ? 0 : 130;
+        deliveryFee = selectedPaymentMode === 'Store Pick-up' ? 0 : 130;
         updateSummary();
       }
 
@@ -206,6 +216,7 @@ $itemsResult = $stmt->get_result();
         }, 0);
         updateSummary();
       }
+      
 
       // Function to handle checkbox changes
       function handleCheckboxChange(checkbox) {
@@ -365,6 +376,46 @@ $itemsResult = $stmt->get_result();
       document.getElementById('payment-mode').value = paymentMode;
 
       document.getElementById('checkout-form').submit();
+    });
+  </script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const checkoutButton = document.getElementById('checkout-button');
+      const cartItems = document.querySelectorAll('.list-group-item'); // List of cart items
+
+      // Disable checkout button if the cart is empty
+      if (cartItems.length === 0) {
+        checkoutButton.disabled = true; // Disable the button
+        checkoutButton.style.backgroundColor = '#ccc'; // Optional: Change color to indicate disabled state
+      }
+
+      // Event listener for delete icon to update the button state
+      document.querySelectorAll('.delete-icon').forEach(button => {
+        button.addEventListener('click', function() {
+          if (document.querySelectorAll('.list-group-item').length === 0) {
+            checkoutButton.disabled = true;
+            checkoutButton.style.backgroundColor = '#ccc';
+          } else {
+            checkoutButton.disabled = false;
+            checkoutButton.style.backgroundColor = '';
+          }
+        });
+      });
+
+      // Event listener for checkout button click
+      checkoutButton.addEventListener('click', function() {
+        const selectedItems = [];
+        document.querySelectorAll('input[type="checkbox"].form-check-input:checked').forEach(checkbox => {
+          const itemId = checkbox.closest('li').querySelector('.itemQty').dataset.id;
+          const itemQuantity = checkbox.closest('li').querySelector('.itemQty').value;
+          selectedItems.push({ id: itemId, quantity: itemQuantity });
+        });
+        document.getElementById('selected-items').value = JSON.stringify(selectedItems);
+        document.getElementById('checkout-form').submit();
+      });
     });
   </script>
 
