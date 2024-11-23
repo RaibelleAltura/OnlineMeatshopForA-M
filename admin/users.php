@@ -101,8 +101,7 @@ include 'sidebar.php';
         </tr>
       </thead>
       <tbody>
-        <?php
-        // Modify the SQL query to include search functionality
+      <?php
         $sql = "SELECT * FROM users";
         if (!empty($search)) {
           $sql .= " WHERE email LIKE '%$search%' OR firstName LIKE '%$search%' OR lastName LIKE '%$search%'";
@@ -111,7 +110,9 @@ include 'sidebar.php';
         if ($result->num_rows > 0) {
           $counter = 1;
           while ($row = $result->fetch_assoc()) {
-            $passwordMasked = str_repeat('*', strlen($row['password']));
+            $passwordMasked = str_repeat('*', 10); // Show a fixed 10 asterisks for masking
+            $passwordVisible = substr($row['password'], 0, 10); // Show up to 10 characters when revealed
+
             echo "<tr>
                       <td>{$counter}</td>
                       <td>{$row['dateCreated']}</td>
@@ -121,7 +122,7 @@ include 'sidebar.php';
                       <td>{$row['contact']}</td>
                       <td>
                           <span class='password-masked'>{$passwordMasked}</span>
-                          <span class='password-visible' style='display: none;'>{$row['password']}</span>
+                          <span class='password-visible' style='display: none;'>{$passwordVisible}</span>
                           <i class='fas fa-eye-slash toggle-password' onclick='togglePassword(this)'></i>
                       </td>
                       <td>
@@ -135,10 +136,16 @@ include 'sidebar.php';
           echo "<tr><td colspan='8' style='text-align: center;'>No Users Found</td></tr>";
         }
         $conn->close();
-        ?>
+      ?>
+
+
       </tbody>
     </table>
   </div>
+
+  
+
+  
 
 
   <!-- Modal for adding users -->
@@ -252,20 +259,24 @@ include 'sidebar.php';
     });
 
     function togglePassword(element) {
-      const passwordMasked = element.previousElementSibling.previousElementSibling;
-      const passwordVisible = element.previousElementSibling;
-      if (passwordMasked.style.display === 'none') {
-        passwordMasked.style.display = 'inline';
-        passwordVisible.style.display = 'none';
-        element.classList.remove('fa-eye');
-        element.classList.add('fa-eye-slash');
-      } else {
-        passwordMasked.style.display = 'none';
-        passwordVisible.style.display = 'inline';
-        element.classList.remove('fa-eye-slash');
-        element.classList.add('fa-eye');
-      }
-    }
+  const passwordMasked = element.previousElementSibling.previousElementSibling;
+  const passwordVisible = element.previousElementSibling;
+
+  // Toggle visibility
+  if (passwordMasked.style.display === 'none') {
+    passwordMasked.style.display = 'inline'; // Show masked password
+    passwordVisible.style.display = 'none'; // Hide visible password
+    element.classList.remove('fa-eye');
+    element.classList.add('fa-eye-slash');
+  } else {
+    passwordMasked.style.display = 'none'; // Hide masked password
+    passwordVisible.style.display = 'inline'; // Show visible password
+    element.classList.remove('fa-eye-slash');
+    element.classList.add('fa-eye');
+  }
+}
+
+
 
     function togglePasswordVisibility() {
       const passwordInput = document.getElementById('Password');
@@ -318,18 +329,20 @@ include 'sidebar.php';
     });
 
     function deleteItem(email) {
-      if (confirm('Are you sure you want to delete this User?')) {
+    if (confirm('Are you sure you want to delete this User?')) {
         var xhr = new XMLHttpRequest();
         xhr.open("POST", "delete_user.php", true);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function() {
-          if (xhr.readyState == 4 && xhr.status == 200) {
-            location.reload();
-          }
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                alert(xhr.responseText); // Show the response
+                location.reload(); // Reload the page
+            }
         };
         xhr.send("email=" + encodeURIComponent(email));
-      }
     }
+}
+
 
     function toggleEditPasswordVisibility() {
       const passwordField = document.getElementById('editPassword');

@@ -112,44 +112,48 @@ include 'sidebar.php';
       </thead>
       <tbody>
         <?php
-        // Modify the SQL query to include search functionality
-        // SA ADD STAFF AKO NAG UPDATE
-        $sql = "SELECT * FROM staff";
-        if (!empty($search)) {
-          $sql .= " WHERE email LIKE '%$search%' OR firstName LIKE '%$search%' OR lastName LIKE '%$search%'";
-        }
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-
-          while ($row = $result->fetch_assoc()) {
-            $passwordMasked = str_repeat('*', strlen($row['password']));
-            echo "<tr>
-                      <td>{$row['id']}</td>
-                      <td>{$row['createdAt']}</td>
-                      <td>{$row['email']}</td>
-                      <td>{$row['firstName']} {$row['lastName']}</td>
-                      <td>{$row['contact']}</td>
-                      <td>{$row['role']}</td>
-                      <td>
-                          <span class='password-masked'>{$passwordMasked}</span>
-                          <span class='password-visible' style='display: none;'>{$row['password']}</span>
-                          <i class='fas fa-eye-slash toggle-password' onclick='togglePassword(this)'></i>
-                      </td>
-                      <td>
-                          <button id='editbtn' onclick='openEditUserModal(this)' data-email='{$row['email']}' data-firstname='{$row['firstName']}' data-lastname='{$row['lastName']}' data-contact='{$row['contact']}' data-role='{$row['role']}' data-password='{$row['password']}'><i class='fas fa-edit'></i></button>
-                          <button id='deletebtn' onclick=\"deleteItem('{$row['email']}')\"><i class='fas fa-trash'></i></button>
-                      </td>
-                  </tr>";
+          $sql = "SELECT * FROM staff";
+          if (!empty($search)) {
+            $sql .= " WHERE email LIKE '%$search%' OR firstName LIKE '%$search%' OR lastName LIKE '%$search%'";
           }
-        } else {
-          echo "<tr><td colspan='8' style='text-align: center;'>No Users Found</td></tr>";
-        }
-        $conn->close();
+          $result = $conn->query($sql);
+          if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+
+              // 10 CHARACTERS ONLYYY ANG MAG SHOW SA PASSWORD
+              // 10 CHARACTERS ONLYYY ANG MAG SHOW SA PASSWORD
+
+              $passwordMasked = str_repeat('*', min(14, strlen($row['password'])));
+              
+              // Limit the actual visible password to the first 10 characters
+              $passwordVisible = substr($row['password'], 0, 14); // Show only first 10 characters
+
+              echo "<tr>
+                        <td>{$row['id']}</td>
+                        <td>{$row['createdAt']}</td>
+                        <td>{$row['email']}</td>
+                        <td>{$row['firstName']} {$row['lastName']}</td>
+                        <td>{$row['contact']}</td>
+                        <td>{$row['role']}</td>
+                        <td>
+                            <span class='password-masked'>{$passwordMasked}</span>
+                            <span class='password-visible' style='display: none;'>{$passwordVisible}</span>
+                            <i class='fas fa-eye-slash toggle-password' onclick='togglePassword(this)'></i>
+                        </td>
+                        <td>
+                            <button id='editbtn' onclick='openEditUserModal(this)' data-email='{$row['email']}' data-firstname='{$row['firstName']}' data-lastname='{$row['lastName']}' data-contact='{$row['contact']}' data-role='{$row['role']}' data-password='{$row['password']}'><i class='fas fa-edit'></i></button>
+                            <button id='deletebtn' onclick=\"deleteItem('{$row['email']}')\"><i class='fas fa-trash'></i></button>
+                        </td>
+                    </tr>";
+            }
+          } else {
+            echo "<tr><td colspan='8' style='text-align: center;'>No Users Found</td></tr>";
+          }
+          $conn->close();
         ?>
       </tbody>
     </table>
   </div>
-
 
   <!-- Modal for adding users -->
   <div id="addUserModal" class="modal">
@@ -273,6 +277,9 @@ include 'sidebar.php';
   <?php
     include_once ('footer.html');
     ?>
+
+
+
   <script src="sidebar.js"></script>
   <script>
     const modal = document.querySelector('.modal');
@@ -285,20 +292,24 @@ include 'sidebar.php';
     });
 
     function togglePassword(element) {
-      const passwordMasked = element.previousElementSibling.previousElementSibling;
-      const passwordVisible = element.previousElementSibling;
-      if (passwordMasked.style.display === 'none') {
-        passwordMasked.style.display = 'inline';
-        passwordVisible.style.display = 'none';
-        element.classList.remove('fa-eye');
-        element.classList.add('fa-eye-slash');
-      } else {
-        passwordMasked.style.display = 'none';
-        passwordVisible.style.display = 'inline';
-        element.classList.remove('fa-eye-slash');
-        element.classList.add('fa-eye');
-      }
-    }
+  const passwordMasked = element.previousElementSibling.previousElementSibling;
+  const passwordVisible = element.previousElementSibling;
+
+  // Eh toggle visibility ng password
+  if (passwordMasked.style.display === 'none') {
+    passwordMasked.style.display = 'inline';
+    passwordVisible.style.display = 'none';
+    element.classList.remove('fa-eye');
+    element.classList.add('fa-eye-slash');
+  } else {
+    passwordMasked.style.display = 'none';
+    passwordVisible.style.display = 'inline';
+    element.classList.remove('fa-eye-slash');
+    element.classList.add('fa-eye');
+  }
+}
+
+
 
     function togglePasswordVisibility() {
       const passwordInput = document.getElementById('Password');
