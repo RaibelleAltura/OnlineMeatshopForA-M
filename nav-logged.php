@@ -333,7 +333,7 @@ $userinfo = get_UserInfo($useremail);
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle mx-lg-2 <?php echo $current_page == 'menu.php' ? 'active' : ''; ?>" href="menu.php" role="button" aria-haspopup="true" aria-expanded="false">
-                  Menu
+                  Products
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <li><a class="dropdown-item" href="menu.php#beef">Beef</a></li>

@@ -107,7 +107,7 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
                       <path fill="currentColor" d="M13.376 11.552l-.264-10.44-10.44-.24.024 2.28 6.96-.048L.2 12.56l1.488 1.488 9.432-9.432-.048 6.912 2.304.024z"></path>
                     </svg>
                   </span>
-                  Explore Menu
+                  Explore our Products!
                 </a>
               </div>
             </div>
@@ -118,71 +118,80 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
         </div>
         <div class="row">
           <!-- Menu Section -->
-          <section>
-            <div class="menu-section">
-              <div class="container-fluid">
-                <div class="row">
-                  <div class="row d-flex justify-content-center align-items-center mb-4 font-weight-bold" id="text">
-                    <h1>OUR <span>MENU</span></h1>
-                  </div>
-                  <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="category-card" style="background-image: url('images/pork.jfif');" data-aos="fade-up">
-                      <div class="card-overlay">
-                        <div class="overlay-content">
-                          <h3>PORK</h3>
-                          <p>Start your meal with our delicious appetizers that set the tone for a delightful dining experience.</p>
-                          <a href="menu.php#pork">
-                            <button class="explore-btn">Explore Variety</button></a>
-                        </div>
-                      </div>
-                      <div class="card-bottom">
-                        <h3>PORK</h3>
-                        <a href="menu.php#pork">
-                          <button class="explore-btn">Explore Variety</button></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="category-card" style="background-image: url('images/beef.jpg');" data-aos="fade-up">
-                      <div class="card-overlay">
-                        <div class="overlay-content">
-                          <h3>BEEF</h3>
-                          <p>Indulge in our wide variety of pizzas, each crafted with the finest ingredients and baked to perfection.</p>
-                          <a href="menu.php#beef">
-                            <button class="explore-btn">Explore Variety</button></a>
-                        </div>
-                      </div>
-                      <div class="card-bottom">
-                        <h3>BEEF</h3>
-                        <a href="menu.php#beef">
-                          <button class="explore-btn">Explore Variety</button></a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="category-card" style="background-image: url('images/chicken.jfif');" data-aos="fade-up">
-                      <div class="card-overlay">
-                        <div class="overlay-content">
-                          <h3>CHICKEN</h3>
-                          <p>Savor our juicy burgers, loaded with fresh toppings and bursting with flavor in every bite.</p>
-                          <a href="menu.php#chicken">
-                            <button class="explore-btn">Explore Variety</button></a>
-                        </div>
-                      </div>
-                      <div class="card-bottom">
-                        <h3>CHICKEN</h3>
-                        <a href="menu.php#chicken">
-                          <button class="explore-btn">Explore Variety</button></a>
-                      </div>
-                    </div>
-                  </div>  
+          <!-- Menu Section -->
+<section>
+  <div class="menu-section">
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Header Text Centered -->
+        <div class="row d-flex justify-content-center align-items-center mb-4 font-weight-bold" id="text">
+          <h1>OUR <span>PRODUCTS</span></h1>
+        </div>
+        
+        <!-- Center the product cards -->
+        <div class="row justify-content-center">
+          <!-- Product Card 1 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="category-card" style="background-image: url('images/pork.jfif');" data-aos="fade-up">
+              <div class="card-overlay">
+                <div class="overlay-content">
+                  <h3>PORK</h3>
+                  <p>Start your meal with our delicious appetizers that set the tone for a delightful dining experience.</p>
+                  <a href="menu.php#pork">
+                    <button class="explore-btn">Explore Variety</button></a>
                 </div>
               </div>
+              <div class="card-bottom">
+                <h3>PORK</h3>
+                <a href="menu.php#pork">
+                  <button class="explore-btn">Explore Variety</button></a>
+              </div>
             </div>
-          </section>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="category-card" style="background-image: url('images/beef.jpg');" data-aos="fade-up">
+              <div class="card-overlay">
+                <div class="overlay-content">
+                  <h3>BEEF</h3>
+                  <p>Indulge in our wide variety of pizzas, each crafted with the finest ingredients and baked to perfection.</p>
+                  <a href="menu.php#beef">
+                    <button class="explore-btn">Explore Variety</button></a>
+                </div>
+              </div>
+              <div class="card-bottom">
+                <h3>BEEF</h3>
+                <a href="menu.php#beef">
+                  <button class="explore-btn">Explore Variety</button></a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="category-card" style="background-image: url('images/chicken.jfif');" data-aos="fade-up">
+              <div class="card-overlay">
+                <div class="overlay-content">
+                  <h3>CHICKEN</h3>
+                  <p>Savor our juicy burgers, loaded with fresh toppings and bursting with flavor in every bite.</p>
+                  <a href="menu.php#chicken">
+                    <button class="explore-btn">Explore Variety</button></a>
+                </div>
+              </div>
+              <div class="card-bottom">
+                <h3>CHICKEN</h3>
+                <a href="menu.php#chicken">
+                  <button class="explore-btn">Explore Variety</button></a>
+              </div>
+            </div>
+          </div>  
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
   </div>
 
   <!-- Why Choose Us Section  -->
@@ -288,7 +297,7 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
   </section>
 
   <!-- About Us section -->
-  <div class="aboutus" id="About-Us" style="background-image: url(images/about-bg.png); background-size: cover; background-position: center; background-repeat: no-repeat;">
+  <div class="aboutus" id="About-Us" style="background-color: #feead4; background-size: cover; background-position: center; background-repeat: no-repeat;">
     <section class="our-story-section p-5">
       <div class="container ">
         <div class="row" data-aos="fade-up">
@@ -379,21 +388,21 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
             <div class="img-area"><img alt="" class="img-fluid" src="uploads/user-girl.png"></div>
             <div class="content">
               <p>"The food was fresh, and the flavors were incredible. I loved the variety on the menu. A great place for family dinners."</p>
-              <h4>-Ritika Singh</h4>
+              <h4>-Raibelle Altura</h4>
             </div>
           </div>
           <div class="single-box">
             <div class="img-area"><img alt="" class="img-fluid" src="uploads/user-boy.jpg"></div>
             <div class="content">
               <p>"The online ordering process was seamless and easy to navigate. My food arrived hot and on time. The delivery service was very professional."</p>
-              <h4>-Zidnan</h4>
+              <h4>-Stemart Kenji</h4>
             </div>
           </div>
           <div class="single-box">
             <div class="img-area"><img alt="" class="img-fluid" src="uploads/default.jpg"></div>
             <div class="content">
               <p>"Fantastic place! The burgers are juicy, and the pizzas are loaded with toppings. The staff is super friendly, and the service is quick. A new favorite spot!"</p>
-              <h4>-Dave Wood</h4>
+              <h4>-Bert Silog</h4>
             </div>
           </div>
           <div class="single-box">
@@ -401,7 +410,7 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
             <div class="content">
               <span class="rating-star"><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i></span>
               <p>"The online ordering system is fantastic. It’s easy to customize my order, and the delivery is always prompt. The food arrives hot and tasty every time."</p>
-              <h4>-jimmy kimmel</h4>
+              <h4>-Jumbo Hotdog</h4>
             </div>
           </div>
         </div>
