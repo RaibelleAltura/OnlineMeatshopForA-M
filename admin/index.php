@@ -230,7 +230,7 @@ include 'sidebar.php';
                         <?php echo $totalEarningChange > 0 ? '▲' : '▼'; ?> <?php echo abs($totalEarningChange); ?>%
                     </p>
                 </div>
-                <i class="icon-top-right icon fas fa-dollar-sign"></i>
+                <i class="icon-top-right icon fas fa-peso-sign"></i>
                 <canvas id="chart1"></canvas>
             </div>
 

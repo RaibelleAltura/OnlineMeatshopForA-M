@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2024 at 03:44 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.29
+-- Generation Time: Nov 21, 2024 at 01:18 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,16 +36,16 @@ CREATE TABLE `cart` (
   `catName` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `total_price` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `cart`
 --
 
 INSERT INTO `cart` (`id`, `itemName`, `price`, `image`, `quantity`, `catName`, `email`, `total_price`) VALUES
-(1, 'French Fries', '760', 'fries.jpg', 1, 'Appetizer', 'asna@gmail.com', '760'),
-(2, 'BBQ Chicken Pizza', '1000', 'bbq-pizza.jpg', 1, 'Pizza', 'zidnan@gmail.com', '1000'),
-(3, 'Strawberry Mocktail', '550', 'strawberry-drink.png', 2, 'Beverage', 'zidnan@gmail.com', '1100');
+(1, 'French Fries', 760, 'fries.jpg', 1, 'Appetizer', 'asna@gmail.com', '760'),
+(2, 'BBQ Chicken Pizza', 1000, 'bbq-pizza.jpg', 1, 'Pizza', 'zidnan@gmail.com', '1000'),
+(3, 'Strawberry Mocktail', 550, 'strawberry-drink.png', 2, 'Beverage', 'zidnan@gmail.com', '1100');
 
 -- --------------------------------------------------------
 
@@ -57,7 +57,7 @@ CREATE TABLE `menucategory` (
   `catId` int(11) NOT NULL,
   `catName` varchar(255) NOT NULL,
   `dateCreated` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `menucategory`
@@ -85,7 +85,7 @@ CREATE TABLE `menuitem` (
   `dateCreated` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedDate` datetime NOT NULL,
   `is_popular` tinyint(1) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `menuitem`
@@ -143,21 +143,16 @@ CREATE TABLE `orders` (
   `order_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `order_status` enum('Pending','Completed','Cancelled','Processing','On the way') NOT NULL DEFAULT 'Pending',
   `cancel_reason` varchar(255) DEFAULT NULL,
-  `note` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `note` varchar(255) NOT NULL,
+  `proof_of_payment` varchar(255) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `email`, `firstName`, `lastName`, `phone`, `address`, `pmode`, `payment_status`, `sub_total`, `grand_total`, `order_date`, `order_status`, `cancel_reason`, `note`) VALUES
-(54, 'preethi@gmail.com', 'Preethi', 'Suresh', '9999999999', 'Galle Road', 'Cash', 'Pending', '1910.00', '2040.00', '2024-08-11 18:00:04', 'Processing', '', 'Add extra cheese'),
-(55, 'zidnan@gmail.com', 'Zidnan', 'Ahamad', '2222222222', 'Kolonnawa', 'Cash', 'Pending', '7420.00', '7550.00', '2024-08-10 18:02:26', 'On the way', '', 'Please make the Burger extra spicy'),
-(56, 'zidnan@gmail.com', 'Mohamed', 'Muhadh', '0000000000', 'Kolonnawa', 'Takeaway', 'Successful', '1150.00', '1150.00', '2024-08-11 18:04:16', 'Completed', '', ''),
-(57, 'jhon@gmail.com', 'Jhon', 'Paul', '7777777777', 'Colombo 15', 'Takeaway', 'Successful', '5720.00', '5720.00', '2024-08-08 18:05:26', 'Completed', '', ''),
-(58, 'zidnan@gmail.com', 'Zidnan', 'Ahamad', '4444444444', 'Colombo 12', 'Takeaway', 'Pending', '2700.00', '2700.00', '2024-08-10 20:12:14', 'Cancelled', 'Waiting time is too long.', ''),
-(59, 'openligths@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Brgy 1 Lipa City, Batangas', 'Takeaway', 'Successful', '2400.00', '2400.00', '2024-10-29 04:30:38', 'Completed', '', 'Contact Me'),
-(60, 'openligths@gmail.com', 'Stemart', 'Tobias', '0992519812', 'Lipa Batangas', 'Cash', 'Pending', '600.00', '730.00', '2024-10-29 07:49:01', 'Pending', NULL, 'Call me abay');
+INSERT INTO `orders` (`order_id`, `email`, `firstName`, `lastName`, `phone`, `address`, `pmode`, `payment_status`, `sub_total`, `grand_total`, `order_date`, `order_status`, `cancel_reason`, `note`, `proof_of_payment`) VALUES
+(69, 'cyxdev24@gmail.com', 'sample1', 'sdfsd', '23123', 'asd', 'Card', 'Pending', 300.00, 430.00, '2024-11-21 12:15:34', 'Pending', '', 'sadads', '2.jpg');
 
 -- --------------------------------------------------------
 
@@ -173,28 +168,14 @@ CREATE TABLE `order_items` (
   `quantity` int(11) NOT NULL,
   `price` decimal(10,0) NOT NULL,
   `total_price` decimal(10,2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `order_items`
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `itemName`, `image`, `quantity`, `price`, `total_price`) VALUES
-(122, 54, 'Garlic Bread', 'garlic-bread.avif', 1, '350', '350.00'),
-(123, 54, 'French Fries', 'fries.jpg', 1, '760', '760.00'),
-(124, 54, 'Cheese Pizza', 'cheese-pizza.jpg', 1, '800', '800.00'),
-(125, 55, 'Dragon Fruit Mojito', 'Dragon-fruit-drink.png', 1, '760', '760.00'),
-(126, 55, 'BBQ Chicken Burger', 'bbq-burger.jpeg', 3, '1900', '5700.00'),
-(127, 55, 'Chicken Wing', 'chicken-wing.avif', 2, '480', '960.00'),
-(128, 56, 'Garlic Bread', 'garlic-bread.avif', 1, '350', '350.00'),
-(129, 56, 'Cheese Pizza', 'cheese-pizza.jpg', 1, '800', '800.00'),
-(130, 57, 'French Fries', 'fries.jpg', 2, '760', '1520.00'),
-(131, 57, 'Firebird Burger', 'firebird-burger.jpeg', 2, '2100', '4200.00'),
-(132, 58, 'Garlic Bread', 'garlic-bread.avif', 3, '350', '1050.00'),
-(133, 58, 'Strawberry Mocktail', 'strawberry-drink.png', 3, '550', '1650.00'),
-(134, 59, 'Chicken Wing', 'chicken-wing.avif', 5, '480', '2400.00'),
-(135, 60, 'Pork Back Fat Skinless', 'Pork backfat Skinless.jpeg', 1, '300', '300.00'),
-(136, 60, 'Beef Shank', 'beef Shank(Bulalo).webp', 1, '300', '300.00');
+(146, 69, 'Beef Forequarter', 'Beef Forequarter.jfif', 1, 300, 300.00);
 
 -- --------------------------------------------------------
 
@@ -212,17 +193,7 @@ CREATE TABLE `reservations` (
   `reservedAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` enum('Pending','On Process','Completed','Cancelled') NOT NULL DEFAULT 'Pending',
   `reservation_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `reservations`
---
-
-INSERT INTO `reservations` (`email`, `name`, `contact`, `noOfGuests`, `reservedTime`, `reservedDate`, `reservedAt`, `status`, `reservation_id`) VALUES
-('asna@gmail.com', 'Asna Assalam', '0000000000', 6, '12:00:00', '2024-07-31', '2024-07-29 15:35:05', 'Completed', 1),
-('zidnan@gmail.com', 'Zidnan', '1111111111', 5, '10:00:07', '2024-08-11', '2024-08-10 18:14:55', 'Pending', 2),
-('preethi@gmail.com', 'Preethi Suresh', '5555555', 2, '06:30:59', '2024-08-10', '2024-08-03 18:15:54', 'On Process', 3),
-('jhon@gmail.com', 'Jhon Paul', '334455', 9, '20:45:59', '2024-08-09', '2024-08-05 18:16:38', 'Cancelled', 4);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -239,7 +210,7 @@ CREATE TABLE `reviews` (
   `review_date` date DEFAULT current_timestamp(),
   `status` enum('approved','pending','rejected') DEFAULT 'pending',
   `response` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `reviews`
@@ -266,7 +237,7 @@ CREATE TABLE `staff` (
   `createdAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `updatedAt` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `profile_image` varchar(255) NOT NULL DEFAULT 'default.jpg'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `staff`
@@ -274,7 +245,11 @@ CREATE TABLE `staff` (
 
 INSERT INTO `staff` (`id`, `firstName`, `lastName`, `email`, `contact`, `role`, `password`, `createdAt`, `updatedAt`, `profile_image`) VALUES
 (7, 'Raibelle', 'Altura', 'openligths@gmail.com', '09215943111', 'superadmin', 'admin123', '2024-10-29 05:01:27', '2024-10-29 05:02:55', 'Screenshot 2022-06-21 160018.png'),
-(8, 'Stemart Kenji', 'Tobias', 'Stemart@gmail.com', '09215942580', 'superadmin', 'stermart123', '2024-10-29 07:56:26', '2024-10-29 07:56:26', 'default.jpg');
+(8, 'Stemart Kenji', 'Tobias', 'Stemart@gmail.com', '09215942580', 'superadmin', 'stermart123', '2024-10-29 07:56:26', '2024-10-29 07:56:26', 'default.jpg'),
+(13, 'John', 'Doe', 'admin@example.com', '1234567890', 'admin', '1', '2024-11-21 11:51:25', '2024-11-21 12:07:40', '1.jpg'),
+(15, 'John', 'Doe', 'admin1@example.com', '1234567890', 'admin', '1234', '2024-11-21 11:55:21', '2024-11-21 11:55:21', 'default.jpg'),
+(16, 'John', 'Doe', 'john.doe@example.com', '1234567890', 'admin', 'yourpassword', '2024-11-21 12:00:54', '2024-11-21 12:00:54', 'default.jpg'),
+(17, 'sample1', 'asd', 'admin2@example.com', 'sdas', 'superadmin', '$2y$10$j9fPLbmFRWJmyROoPPaSUekI0NI57a/VLqzaChvFUdL7u1gyCVmMm', '2024-11-21 12:05:31', '2024-11-21 12:05:31', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -287,21 +262,18 @@ CREATE TABLE `users` (
   `firstName` varchar(255) NOT NULL,
   `lastName` varchar(255) NOT NULL,
   `contact` varchar(10) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `dateCreated` timestamp NOT NULL DEFAULT current_timestamp(),
   `profile_image` varchar(255) NOT NULL DEFAULT 'default.jpg'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`email`, `firstName`, `lastName`, `contact`, `password`, `dateCreated`, `profile_image`) VALUES
-('asna@gmail.com', 'Asna', 'Assalam', '3333333333', 'AsnaA', '2024-07-26 12:50:46', 'user-girl.png'),
-('jhon@gmail.com', 'Jhon', 'Paul', '4444444444', 'JhonP', '2024-08-10 15:37:56', 'default.jpg'),
-('openligths@gmail.com', 'Raibelle', 'Altura', '0945841233', 'raibelle123', '2024-10-29 04:29:22', 'Screenshot 2022-06-21 160018.png'),
-('preethi@gmail.com', 'Preethi', 'Suresh', '2222222222', 'Preethi123', '2024-08-10 15:36:50', 'default.jpg'),
-('zidnan@gmail.com', 'Zidnan', 'Ahamad', '1111111111', 'Zidnan123', '2024-07-30 12:45:21', 'user-boy.jpg');
+('cyxdev24@gmail.com', 'Cyrus', 'Maylan', '0944747433', '$2y$10$36RYa3DN5Ifw3DLu/PqkmukNXzsEtIN3aqOOFNPnR6CvfEbPXEEBW', '2024-11-21 11:30:11', 'default.jpg'),
+('jhon@gmail.com', 'Jhon', 'Paul', '4444444444', 'JhonP', '2024-08-10 15:37:56', 'default.jpg');
 
 --
 -- Indexes for dumped tables
@@ -375,7 +347,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT for table `menucategory`
@@ -393,13 +365,13 @@ ALTER TABLE `menuitem`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
 
 --
 -- AUTO_INCREMENT for table `reservations`
@@ -417,7 +389,7 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `staff`
 --
 ALTER TABLE `staff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables

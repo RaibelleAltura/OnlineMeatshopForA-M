@@ -113,6 +113,7 @@ include 'sidebar.php';
       <tbody>
         <?php
         // Modify the SQL query to include search functionality
+        // SA ADD STAFF AKO NAG UPDATE
         $sql = "SELECT * FROM staff";
         if (!empty($search)) {
           $sql .= " WHERE email LIKE '%$search%' OR firstName LIKE '%$search%' OR lastName LIKE '%$search%'";

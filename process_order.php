@@ -8,8 +8,6 @@ if (!isset($_SESSION['userloggedin']) || $_SESSION['userloggedin'] !== true) {
     exit;
 }
 
-
-
 // Retrieve form data
 $firstName = $_POST['firstName'] ?? '';
 $lastName = $_POST['lastName'] ?? '';
@@ -22,15 +20,40 @@ $total = $_POST['total'] ?? 0;
 $subtotal = $_POST['subtotal'] ?? 0;
 $selectedItems = json_decode($_POST['selected_items'], true) ?? [];
 
-// Handle bank transfer proof upload
+// Handle bank transfer proof upload for 'Card' payment mode
+// YUNG DIRECTORY NYA IS SA UPLOADS KO NALANG NILAGAY YUNG PROOF OF PAYMENT
+// YUNG DIRECTORY NYA IS SA UPLOADS KO NALANG NILAGAY YUNG PROOF OF PAYMENT
+// YUNG DIRECTORY NYA IS SA UPLOADS KO NALANG NILAGAY YUNG PROOF OF PAYMENT
+
+
 $proofOfPayment = null;
 if ($paymentMode === 'Card' && isset($_FILES['proof_of_payment']) && $_FILES['proof_of_payment']['error'] === 0) {
-    $proofDirectory = 'uploads/proofs/';
+    // Directory for storing proof of payment
+    $proofDirectory = 'uploads/';
     if (!file_exists($proofDirectory)) {
         mkdir($proofDirectory, 0777, true); // Ensure directory exists
     }
-    $proofOfPayment = $proofDirectory . basename($_FILES['proof_of_payment']['name']);
-    move_uploaded_file($_FILES['proof_of_payment']['tmp_name'], $proofOfPayment);
+
+    // Get the file name and ensure it has a valid extension
+    $fileName = basename($_FILES['proof_of_payment']['name']);
+    $filePath = $proofDirectory . $fileName;
+
+    // Check file extension (for image types)
+    $validExtensions = ['jpg', 'jpeg', 'png', 'gif'];
+    $fileExtension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+    
+    if (in_array($fileExtension, $validExtensions)) {
+        // Move the file to the uploads folder
+        if (move_uploaded_file($_FILES['proof_of_payment']['tmp_name'], $filePath)) {
+            $proofOfPayment = $fileName; // Store the file name in the database
+        } else {
+            echo 'Error uploading the file.';
+            exit;
+        }
+    } else {
+        echo 'Invalid file type. Please upload an image file.';
+        exit;
+    }
 }
 
 // Begin transaction
@@ -38,11 +61,17 @@ $conn->begin_transaction();
 
 try {
     // Insert order details
-    $stmt = $conn->prepare('INSERT INTO orders (firstName, lastName, email, phone, address, sub_total, grand_total, pmode, note) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)');
+
+    // DITO YUNG PROOF OF PAYMENT INSERTION
+    // DITO YUNG PROOF OF PAYMENT INSERTION
+    // DITO YUNG PROOF OF PAYMENT INSERTION
+
+    
+    $stmt = $conn->prepare('INSERT INTO orders (firstName, lastName, email, phone, address, sub_total, grand_total, pmode, note, proof_of_payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
     if ($stmt === false) {
         throw new Exception('Failed to prepare order insertion statement: ' . $conn->error);
     }
-    $stmt->bind_param('sssssddss', $firstName, $lastName, $email, $contact, $address, $subtotal, $total, $paymentMode, $orderNote);
+    $stmt->bind_param('sssssddsss', $firstName, $lastName, $email, $contact, $address, $subtotal, $total, $paymentMode, $orderNote, $proofOfPayment);
     $stmt->execute();
     $orderId = $stmt->insert_id;
 
@@ -51,7 +80,7 @@ try {
     if ($stmt === false) {
         throw new Exception('Failed to prepare order items insertion statement: ' . $conn->error);
     }
-    
+
     foreach ($selectedItems as $item) {
         $itemId = $item['id'] ?? 0;
         $itemQuantity = $item['quantity'] ?? 0;
@@ -92,6 +121,5 @@ try {
     // Rollback transaction in case of error
     $conn->rollback();
     echo 'Error: ' . $e->getMessage();
-    
 }
 ?>

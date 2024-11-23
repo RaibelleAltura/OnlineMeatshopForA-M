@@ -10,10 +10,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Establishing connection to the database
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -27,10 +25,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contact = $_POST['contact'];
     $role = $_POST['role'];
     $password = $_POST['password'];
-   
 
+    // Hash ng password before storing sa database
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
-    // Prepare SQL statement to insert data into reservations table
+    // insert sa staff
     $sql = "INSERT INTO staff (email, firstName, lastName, contact, role, password) 
             VALUES (?, ?, ?, ?, ?, ?)";
 
@@ -39,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt === false) {
         die("Prepare failed: " . $conn->error);
     }
-    $stmt->bind_param("ssssss", $email, $firstName, $lastName, $contact, $role, $password);
+    $stmt->bind_param("ssssss", $email, $firstName, $lastName, $contact, $role, $passwordHash);
 
     // Execute the statement
     if ($stmt->execute()) {

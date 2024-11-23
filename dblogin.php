@@ -5,77 +5,70 @@ session_start();
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-// Establish a connection to the database
+// Database connection
 $servername = "localhost";
 $username = "root";
-$password = "";
+$passwordDB = "";  // Database password (empty if no password)
 $dbname = "restaurant";
 
-// Enable error reporting
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conn = new mysqli($servername, $username, $passwordDB, $dbname);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Retrieve the email and password from the form
-$email = $_POST['email'];
-$password = $_POST['password'];
-
-// Check if the email and password match an admin or user
-// Prepare the SQL query for users table
-$sql_users = "SELECT * FROM users WHERE email = ? AND password = ?";
+// Check for user login (customers)
+$sql_users = "SELECT * FROM users WHERE email = ?";
 $stmt_users = $conn->prepare($sql_users);
-$stmt_users->bind_param("ss", $email, $password);
+$stmt_users->bind_param("s", $email);
 $stmt_users->execute();
 $result_users = $stmt_users->get_result();
 
-// Prepare the SQL query for staff table
-$sql_staff = "SELECT * FROM staff WHERE email = ? AND password = ?";
+// Check for staff login (admins)
+$sql_staff = "SELECT * FROM staff WHERE email = ?";
 $stmt_staff = $conn->prepare($sql_staff);
-$stmt_staff->bind_param("ss", $email, $password);
+$stmt_staff->bind_param("s", $email);
 $stmt_staff->execute();
 $result_staff = $stmt_staff->get_result();
 
-try {
-    // Check if the login details are correct for users
-    if ($result_users->num_rows > 0) {
-        // Store user email in session
+if ($result_users->num_rows > 0) {
+    // Customer found
+    $user = $result_users->fetch_assoc();
+    // Check if password is hashed or plain text
+    if (password_verify($password, $user['password']) || $password == $user['password']) {
+        // User login successful
         $_SESSION['email'] = $email;
         $_SESSION['userloggedin'] = true;
-
         echo '<script>alert("User is logged in!"); window.location.href="menu.php";</script>';
         exit();
-    } 
-    // Check if the login details are correct for staff (admin or superadmin)
-    else if ($result_staff->num_rows > 0) {
-        $staff = $result_staff->fetch_assoc();
-        if ($staff['role'] === 'superadmin' || $staff['role'] === 'admin') {
-            // Store admin email in session
-            $_SESSION['email'] = $email;
-            $_SESSION['adminloggedin'] = true;
-
-            echo '<script>alert("Admin is logged in!"); window.location.href="Admin/index.php";</script>';
-            exit();
-        } else {
-            // If the role is not admin or superadmin, redirect to the login page with an error
-            header('Location: login.php?error=not_authorized');
-            exit();
-        }
     } else {
-        // Redirect to the login page with an error message
-        header('Location: login.php?error');
+        // Invalid password for user
+        echo '<script>alert("Invalid password!"); window.location.href="login.php";</script>';
         exit();
     }
-} catch (Exception $e) {
-    // Handle the error (e.g., log the error)
-    header('Location: login.php?error');
+} else if ($result_staff->num_rows > 0) {
+    // Staff (Admin) found
+    $staff = $result_staff->fetch_assoc();
+    // Check if password is hashed or plain text
+    if (password_verify($password, $staff['password']) || $password == $staff['password']) {
+        // Admin login successful
+        $_SESSION['email'] = $email;
+        $_SESSION['adminloggedin'] = true;
+        echo '<script>alert("Admin is logged in!"); window.location.href="Admin/index.php";</script>';
+        exit();
+    } else {
+        // Invalid password for admin
+        echo '<script>alert("Invalid password for admin!"); window.location.href="login.php";</script>';
+        exit();
+    }
+} else {
+    // Email not found
+    echo '<script>alert("Email not found!"); window.location.href="login.php";</script>';
     exit();
 }
 
-// Close the connection
+// Close connections
+$stmt_users->close();
+$stmt_staff->close();
 $conn->close();
+?>
