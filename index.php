@@ -428,18 +428,12 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
           <p>Email: AandMFrozenMeatTrading@gmail.com</p>
           <p>Phone: 0917 302 3141</p>
         </div>
+        
         <div class="footer-col">
           <h4>Follow Us</h4>
           <div class="social-icons">
             <a href="#"><i class="fab fa-facebook-f"></i></a>
           </div>
-        </div>
-        <div class="footer-col">
-          <h4>Subscribe</h4>
-          <form action="#">
-            <input type="email" placeholder="Your email address" required style="background-color: #f9f9f9; color: #333; margin-top: 12px;">
-            <button type="submit">Subscribe</button>
-          </form>
         </div>
       </div>
       <div class="footer-bottom">

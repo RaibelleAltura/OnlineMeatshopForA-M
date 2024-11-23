@@ -178,7 +178,7 @@ include 'sidebar.php';
             <th>Email</th>
             <th>Name</th>
             <th>Contact</th>
-            <th>No Of Guests</th>
+            <th>Number Of Boxes</th>
             <th>Reserved Date</th>
             <th>Reserved Time</th>
             <th>Status</th>
