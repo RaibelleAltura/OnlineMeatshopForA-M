@@ -1,13 +1,20 @@
+
+
+
+
+
+
+
 <?php
 session_start();
 
-// Check if admin is logged in
+// Check if user is logged in
 if (!isset($_SESSION['userloggedin']) || !$_SESSION['userloggedin']) {
   header('Location: login.php');
   exit;
 }
 
-// Get the logged-in admin's email from the session
+// Get the logged-in user's email from the session
 $user_email = isset($_SESSION['email']) ? $_SESSION['email'] : '';
 
 if (empty($user_email)) {
@@ -16,56 +23,65 @@ if (empty($user_email)) {
 
 // Database connection
 include 'db_connection.php';
-// Function to retrieve admin information
+// Function to retrieve user information
+
 function getUserInfo($email)
 {
-  global $conn;
-  $stmt = $conn->prepare("SELECT firstName, lastName, email, contact, password, profile_image FROM users WHERE email = ?");
-  $stmt->bind_param("s", $email);
-  $stmt->execute();
-  $stmt->bind_result($firstName, $lastName, $email, $contact, $password, $profile_image);
-  $stmt->fetch();
-  $stmt->close();
-  return [
-    'firstName' => $firstName ?: '',
-    'lastName' => $lastName ?: '',
-    'email' => $email ?: '',
-    'contact' => $contact ?: '',
-    'password' => $password ?: '',
-    'profile_image' => $profile_image ?: 'default.jpg'
-  ];
+    global $conn;
+    $stmt = $conn->prepare("SELECT firstName, lastName, email, contact, password, profile_image FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->bind_result($firstName, $lastName, $email, $contact, $password, $profile_image);
+    $stmt->fetch();
+    $stmt->close();
+    return [
+        'firstName' => $firstName ?: '',
+        'lastName' => $lastName ?: '',
+        'email' => $email ?: '',
+        'contact' => $contact ?: '',
+        'password' => $password ?: '',
+        'profile_image' => $profile_image ?: 'default.jpg'
+    ];
 }
 
-// Function to update admin information
 function updateUserInfo($email, $firstName, $lastName, $contact, $password, $profile_image)
 {
-  global $conn;
-  $stmt = $conn->prepare("UPDATE users SET firstName = ?, lastName = ?, contact = ?, password = ?, profile_image = ? WHERE email = ?");
-  $stmt->bind_param("ssssss", $firstName, $lastName, $contact, $password, $profile_image, $email);
-  $stmt->execute();
-  $stmt->close();
+    global $conn;
+    if ($password === NULL) {
+        $stmt = $conn->prepare("UPDATE users SET firstName = ?, lastName = ?, contact = ?, profile_image = ? WHERE email = ?");
+        $stmt->bind_param("sssss", $firstName, $lastName, $contact, $profile_image, $email);
+    } else {
+        $stmt = $conn->prepare("UPDATE users SET firstName = ?, lastName = ?, contact = ?, password = ?, profile_image = ? WHERE email = ?");
+        $stmt->bind_param("ssssss", $firstName, $lastName, $contact, $password, $profile_image, $email);
+    }
+    $stmt->execute();
+    $stmt->close();
 }
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $firstName = $_POST['firstName'];
-  $lastName = $_POST['lastName'];
-  $contact = $_POST['contact'];
-  $password = $_POST['password'];
-  $profile_image = getUserInfo($user_email)['profile_image'];
+    $firstName = $_POST['firstName'];
+    $lastName = $_POST['lastName'];
+    $contact = $_POST['contact'];
+    $new_password = $_POST['password']; // Input from the form
+    $user_info = getUserInfo($user_email);
+    $current_password = $user_info['password']; // Original hashed password
+    $profile_image = $user_info['profile_image'];
 
-  // Handle profile image upload
-  if (!empty($_FILES['profile_image']['name'])) {
-    $target_dir = "uploads/";
-    $target_file = $target_dir . basename($_FILES["profile_image"]["name"]);
-    move_uploaded_file($_FILES["profile_image"]["tmp_name"], $target_file);
-    $profile_image = basename($_FILES["profile_image"]["name"]);
-  }
+    // Retain the existing hashed password if the user hasn't changed it
+    $password_to_update = $new_password === substr($current_password, 0, 6) . '...' ? NULL : password_hash($new_password, PASSWORD_DEFAULT);
 
-  updateUserInfo($user_email, $firstName, $lastName, $contact, $password, $profile_image);
+    if (!empty($_FILES['profile_image']['name'])) {
+        $target_dir = "../uploads/";
+        $target_file = $target_dir . basename($_FILES["profile_image"]["name"]);
+        move_uploaded_file($_FILES["profile_image"]["tmp_name"], $target_file);
+        $profile_image = basename($_FILES["profile_image"]["name"]);
+    }
 
-  header('Location: profile.php');
-  exit;
+    updateUserInfo($user_email, $firstName, $lastName, $contact, $password_to_update, $profile_image);
+
+    header('Location: profile.php');
+    exit;
 }
 
 $user_info = getUserInfo($user_email);
@@ -148,10 +164,10 @@ $user_info = getUserInfo($user_email);
         </div>
 
         <div class="form-row">
-          <div class="form-group">
-            <input type="text" id="password" name="password" value="<?php echo htmlspecialchars($user_info['password']); ?>" placeholder=" ">
-            <label for="password">Password:</label>
-          </div>
+        <div class="form-group">
+                            <input type="text" id="password" name="password" value="<?php echo htmlspecialchars(substr($user_info['password'], 0, 6) . '...'); ?>" placeholder=" ">
+                            <label for="password">Password:</label>
+                        </div>
 
           <div class="form-group">
             <input type="file" id="profile_image" name="profile_image" placeholder=" ">
