@@ -68,7 +68,7 @@ include 'sidebar.php';
 
     <ul>
       <li><a href="index.php"><i class="fas fa-chart-line" style="margin-right: 10px;"></i> Overview</a></li>
-      <li><a href="admin_menu.php" ><i class="fas fa-utensils" style="margin-right: 10px;"></i> Menu Management</a></li>
+      <li><a href="admin_menu.php" ><i class="fas fa-utensils" style="margin-right: 10px;"></i> Product Management</a></li>
       <li><a href="admin_orders.php"><i class="fas fa-shopping-cart" style="margin-right: 10px;"></i> Orders</a></li>
       <li><a href="reservations.php"><i class="fas fa-calendar-alt" style="margin-right: 10px;"></i> Reservations</a></li>
       <li><a href="users.php"><i class="fas fa-users" style="margin-right: 10px;"></i> Users</a></li>
