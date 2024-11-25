@@ -74,9 +74,9 @@ $result = $conn->query($query);
         <!-- Navigation Items -->
         <ul>
             <li><a href="index.php"><i class="fas fa-chart-line"></i> Overview</a></li>
-            <li><a href="admin_menu.php"><i class="fas fa-utensils"></i> Product Management</a></li>
-            <li><a href="admin_orders.php" class="active"><i class="fas fa-shopping-cart"></i> Orders</a></li>
+            <li><a href="admin_menu.php"><i class="fas fa-utensils"></i> Products</a></li>
             <li><a href="reservations.php"><i class="fas fa-calendar-alt"></i> Reservations</a></li>
+            <li><a href="admin_orders.php" class="active"><i class="fas fa-shopping-cart"></i> Order Management</a></li>
             <li><a href="users.php"><i class="fas fa-users"></i> Users</a></li>
             <li><a href="reviews.php"><i class="fas fa-star"></i> Reviews</a></li>
             <li><a href="staffs.php"><i class="fas fa-users"></i> Staffs</a></li>
