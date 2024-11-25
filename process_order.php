@@ -8,6 +8,13 @@ if (!isset($_SESSION['userloggedin']) || $_SESSION['userloggedin'] !== true) {
     exit;
 }
 
+$allowed_provinces = ['Cavite', 'Laguna', 'Rizal', 'Batangas', 'Quezon'];
+$province = $_POST['province'] ?? '';
+
+if (!in_array($province, $allowed_provinces)) {
+    die('Invalid province selected. Please choose a valid province from Region 4A.');
+}
+
 // Retrieve form data
 $firstName = $_POST['firstName'] ?? '';
 $lastName = $_POST['lastName'] ?? '';

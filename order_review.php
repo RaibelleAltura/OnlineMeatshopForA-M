@@ -117,12 +117,19 @@ $total = $subtotal + $deliveryFee;
           </div>
         </div>
         <div class="form-group">
-          <label for="order_note">Order Note:</label>
-          <textarea class="form-control" id="order_note" name="order_note" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="address">Address:</label>
-          <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
+        <label for="province">Province (Region 4A - Calabarzon):</label>
+    <select class="form-control" id="province" name="province" required>
+        <option value="">-- Select Province --</option>
+        <option value="Cavite">Cavite</option>
+        <option value="Laguna">Laguna</option>
+        <option value="Rizal">Rizal</option>
+        <option value="Batangas">Batangas</option>
+        <option value="Quezon">Quezon</option>
+    </select>
+</div>
+<div class="form-group">
+    <label for="address">Full Address: Ex. Brgy,City,Purok,House Number</label>
+    <textarea class="form-control" id="address" name="address" rows="3" required></textarea>
         </div>
 
     </div>
