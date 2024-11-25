@@ -104,7 +104,7 @@ $result = $conn->query($query);
                     <option value="">All Orders</option>
                     <option value="Pending">Pending</option>
                     <option value="On Process">Process</option>
-                    <option value="On the way">On the way</option>
+                    <option value="On the way">Out for Delivery</option>
                     <option value="Completed">Completed</option>
                     <option value="Cancelled">Cancelled</option>
                 </select>

@@ -339,7 +339,7 @@ include 'db_connection.php';
                 <div class="tab active" data-status="All">All</div>
                 <div class="tab" data-status="Pending">Pending</div>
                 <div class="tab" data-status="Processing">Processing</div>
-                <div class="tab" data-status="On the way">On the way</div>
+                <div class="tab" data-status="On the way">Out for Delivery</div>
                 <div class="tab" data-status="Completed">Completed</div>
                 <div class="tab" data-status="Cancelled">Cancelled</div>
             </div>
