@@ -321,9 +321,6 @@ $userinfo = get_UserInfo($useremail);
         <a class="navbar-brand me-auto logo" href="index.php">April and Marc Frozen Meat Trading</a>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
           <div class="offcanvas-header">
-            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
-              Flavour Fiesta
-            </h5>
             <button type="button" class="btn-close btn-close-red" aria-label="Close" id="closeOffcanvas"></button>
           </div>
           <div class="offcanvas-body text-center">
