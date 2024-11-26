@@ -67,29 +67,45 @@
 
 
 
-  <!-- footer -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-row">
-        <div class="footer-col" id="contact">
-          <h4>Contact Us</h4>
-          <p>Brgy. Mojon Tampoy San Jose, Batangas Philippines</p>
-          <p>Email: AandMFrozenMeatTrading@gmail.com</p>
-          <p>Phone: 0917 302 3141</p>
+<!-- footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-row">
+      <!-- Contact Us Section -->
+      <div class="footer-col" id="contact">
+        <h4>Contact Us</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Brgy. Mojon Tampoy San Jose, Batangas Philippines</p>
+        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:AandMFrozenMeatTrading@gmail.com" style="color: #007bff; text-decoration: none;">AandMFrozenMeatTrading@gmail.com</a></p>
+        <p><i class="fas fa-phone"></i> Phone: 0917 302 3141</p>
+      </div>
+
+      <!-- Follow Us Section -->
+      <div class="footer-col">
+        <h4>Follow us on Facebook Page</h4>
+        <div class="social-icons">
+        <a href="https://www.facebook.com/by.alexramos" style="color: #007bff; text-decoration: none;" target="_blank">
+            <i class="fab fa-facebook-f"></i> A And M Frozen Meat Trading
+          </a>
         </div>
-        
+      </div>
+
+      <!-- Terms and Conditions Section -->
+      <div class="footer-col">
+      <h4><a href="terms_and_conditions.php" style="color: #007bff; text-decoration: none;">Terms and Conditions</a></h4>
         <div class="footer-col">
-          <h4>Follow Us</h4>
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-          </div>
-        </div>
+        <h4><a href="terms_and_conditions.php" style="color: #007bff; text-decoration: none;">Privacy Policy</a></h4>
       </div>
-      <div class="footer-bottom">
-        <h4>&copy; April and Marc Frozen Meat Trading</h4>
       </div>
+
     </div>
-  </footer>
+
+    <!-- Footer Bottom Section -->
+    <div class="footer-bottom">
+      <h4>&copy; 2024 April and Marc Frozen Meat Trading. All rights reserved.</h4>
+    </div>
+  </div>
+</footer>
+
 
 
 
