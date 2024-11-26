@@ -327,12 +327,12 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
   <section class="table-reservation" id="Reservation">
     <div class="row text-center ms-4" data-aos="fade-up">
       <h1 class="mb-2">ORDER <span style="color: #fb4a36;">RESERVATION</span></h1>
-      <h5 class="mb-5">Book your dining experience with us and enjoy a delightful meal.</h5>
+      <h5 class="mb-5">Book your orders here!</h5>
     </div>
     <div class="table ms-4 me-5" data-aos="fade-up">
       <div class="reservation row reveal">
         <div class="reservation-image col-lg-7 col-md-6 col-sm-12" style="background: none !important; padding: 0 !important;">
-          <img src="images/banner.jpg" alt="Reservation" style="background: none ; width: 100%; height: 100%; padding: 0 !important;" class=" w-100 h-100">
+          <img src="images/logo1.png" alt="Reservation" style="background: none ; width: 100%; height: 100%; padding: 0 !important;" class=" w-100 h-100">
         </div>
         <div class="reservation-section col-lg-5 col-md-6 col-sm-12">
           <h2 style="background-color: #feead4;">Reserve Now!</h2>
@@ -363,7 +363,7 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
                 <input type="time" id="time" name="reservedTime" required>
               </div>
               <div class="form-group">
-                <label for="guests">Number of Boxex/Orders:</label>
+                <label for="guests">Quantity of Box:</label>
                 <input type="number" id="guests" name="noOfGuests" required min="1">
               </div>
             </div>
