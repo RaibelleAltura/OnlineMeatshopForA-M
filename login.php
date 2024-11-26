@@ -43,6 +43,12 @@
                         <input type="password" id="loginPassword" placeholder="Password" name="password" required onkeyup="hideAlertBox()" />
                         <i class="fas fa-eye-slash" id="toggleLoginPassword" style="cursor: pointer;"></i>
                     </div>
+                    <p class="terms">
+    By signing in, you agree to our 
+    <a href="terms_and_conditions.php" target="_blank">Terms and Conditions</a>.
+</p>
+
+
                     <input type="submit" value="Login" class="submit solid" id="loginButton" />
 
                     <?php

@@ -1,0 +1,109 @@
+/* General Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Login Container */
+.container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Form Title */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.input-field {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-field i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.input-field input {
+    width: 100%;
+    padding: 10px 40px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-field input:focus {
+    border-color: #007bff;
+}
+
+/* Login Button */
+.btn.solid {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn.solid:hover {
+    background-color: #0056b3;
+    transform: scale(1.02);
+}
+
+/* Terms and Conditions Link */
+.terms {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.terms a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s, text-shadow 0.3s;
+}
+
+.terms a:hover {
+    color: #0056b3;
+    text-shadow: 0 0 5px rgba(0, 91, 187, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+    .container {
+        padding: 20px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .btn.solid {
+        font-size: 14px;
+    }
+}
