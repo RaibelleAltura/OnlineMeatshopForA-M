@@ -397,14 +397,17 @@
 .input-field .fa-eye-slash:hover {
   color: #0056b3;
 }
+
+
 /* Styling for the terms and conditions text */
 .terms {
   margin-top: 10px;
   font-size: 14px;
   color: #333; /* Default text color */
+  text-align: center; /* Center the terms and conditions text */
 }
 
-/* Styling for the Terms and Conditions link to look like a hyperlink */
+/* Styling for the Terms and Conditions link */
 .terms a {
   color: #007bff; /* Blue color for hyperlink */
   font-weight: bold; /* Bold text */
@@ -412,8 +415,29 @@
   transition: color 0.3s, text-decoration 0.3s; /* Smooth hover effect */
 }
 
-/* Hover effect for the link */
+/* Hover effect for the Terms and Conditions link */
 .terms a:hover {
+  color: #0056b3; /* Darker blue when hovered */
+  text-decoration: underline; /* Maintain underline on hover */
+}
+
+/* Styling for the Privacy Policy text */
+.privacy-policy {
+  text-align: center; /* Center the privacy policy link */
+  margin-top: 0px;
+  font-size: 14px;
+}
+
+/* Styling for the Privacy Policy link */
+.privacy-policy a {
+  color: #007bff; /* Blue color for hyperlink */
+  font-weight: bold; /* Bold text */
+  text-decoration: underline; /* Underline to look like a typical hyperlink */
+  transition: color 0.3s, text-decoration 0.3s; /* Smooth hover effect */
+}
+
+/* Hover effect for the Privacy Policy link */
+.privacy-policy a:hover {
   color: #0056b3; /* Darker blue when hovered */
   text-decoration: underline; /* Maintain underline on hover */
 }

@@ -47,6 +47,11 @@
     By signing in, you agree to our 
     <a href="terms_and_conditions.php" target="_blank">Terms and Conditions</a>.
 </p>
+<p class="privacy-policy">
+    <a href="terms_and_conditions.php" target="_blank">Privacy Policy</a>
+</p>
+
+
 
 
                     <input type="submit" value="Login" class="submit solid" id="loginButton" />
