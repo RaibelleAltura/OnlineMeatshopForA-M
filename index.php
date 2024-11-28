@@ -393,51 +393,7 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
     </div>
   </section>
 
-  <!-- Review  -->
-  <section class="testimonial" id="review">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1">
-          <div class="text-center mb-5" data-aos="fade-up">
-            <h1>Hear From Our <span>Happy Customers!</span></h1>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="clients-carousel owl-carousel" data-aos="fade-up">
-          <div class="single-box">
-            <div class="img-area"><img alt="" class="img-fluid" src="uploads/user-girl.png"></div>
-            <div class="content">
-              <p>"The food was fresh, and the flavors were incredible. I loved the variety on the menu. A great place for family dinners."</p>
-              <h4>-Raibelle Altura</h4>
-            </div>
-          </div>
-          <div class="single-box">
-            <div class="img-area"><img alt="" class="img-fluid" src="uploads/user-boy.jpg"></div>
-            <div class="content">
-              <p>"The online ordering process was seamless and easy to navigate. My food arrived hot and on time. The delivery service was very professional."</p>
-              <h4>-Stemart Kenji</h4>
-            </div>
-          </div>
-          <div class="single-box">
-            <div class="img-area"><img alt="" class="img-fluid" src="uploads/default.jpg"></div>
-            <div class="content">
-              <p>"Fantastic place! The burgers are juicy, and the pizzas are loaded with toppings. The staff is super friendly, and the service is quick. A new favorite spot!"</p>
-              <h4>-Bert Silog</h4>
-            </div>
-          </div>
-          <div class="single-box">
-            <div class="img-area"><img alt="" class="img-fluid" src="uploads/default.jpg"></div>
-            <div class="content">
-              <span class="rating-star"><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i><i class="icofont-star"></i></span>
-              <p>"The online ordering system is fantastic. It’s easy to customize my order, and the delivery is always prompt. The food arrives hot and tasty every time."</p>
-              <h4>-Jumbo Hotdog</h4>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
 
  <!-- footer -->
 <footer>
@@ -447,7 +403,7 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
       <div class="footer-col" id="contact">
         <h4>Contact Us</h4>
         <p><i class="fas fa-map-marker-alt"></i> Brgy. Mojon Tampoy San Jose, Batangas Philippines</p>
-        <p><i class="fas fa-envelope"></i> Email: <a href="mailto:AandMFrozenMeatTrading@gmail.com" style="color: #007bff; text-decoration: none;">AandMFrozenMeatTrading@gmail.com</a></p>
+        <p><i class="fas fa-envelope"></i> Email: <a href="mailto: marcjustineb.ramos082106@gmail.com" style="color: #007bff; text-decoration: none;">AandMFrozenMeatTrading@gmail.com <br>marcjustineb.ramos082106@gmail.com</a></p>
         <p><i class="fas fa-phone"></i> Phone: 0917 302 3141</p>
       </div>
 

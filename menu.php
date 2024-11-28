@@ -97,7 +97,6 @@ while ($row = $categoryResult->fetch_assoc()) {
                                                     <p class="card-text text-center ">₱&nbsp;<?= number_format($row['price']) ?>/- Per Box</p>
                                                 </div>
                                                 <div>
-                                                    
                                                     <button class="addItemBtn <?= $buttonClass ?>" type="button">
                                                         <i class="fas fa-cart-plus"></i> &nbsp;&nbsp;Add to cart
                                                     </button>

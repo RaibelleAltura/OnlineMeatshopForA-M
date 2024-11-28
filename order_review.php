@@ -42,6 +42,7 @@ foreach ($itemDetails as $item) {
 $deliveryFee = ($_POST['payment_mode'] === 'Takeaway') ? 0 : 130;
 $total = $subtotal + $deliveryFee;
 
+
 // Assuming user's email is stored in session
 $email = $_SESSION['email'] ?? '';
 
@@ -62,6 +63,9 @@ if ($email) {
     $stmt->close();
 }
 
+// Define the fixed account name and number
+$accountName = "April And Marc Frozen Meat Trading";
+$accountNumber = "01354-8000-392";
 ?>
 
 <!DOCTYPE html>
@@ -96,14 +100,16 @@ if ($email) {
         <input type="hidden" name="selected_items" value='<?= json_encode($selectedItems) ?>'>
         <input type="hidden" name="payment_mode" value="<?= htmlspecialchars($_POST['payment_mode']) ?>">
 
+
         <?php if ($_POST['payment_mode'] === 'Card') : ?>
+            <!-- Account Name and Account Number Fields (Fixed and Readonly) -->
             <div class="form-group">
                 <label for="bank_account_name">Account Name:</label>
-                <input type="text" class="form-control" id="bank_account_name" name="bank_account_name" required>
+                <input type="text" class="form-control" id="bank_account_name" name="bank_account_name" value="<?= htmlspecialchars($accountName) ?>" readonly>
             </div>
             <div class="form-group">
                 <label for="bank_account_number">Account Number:</label>
-                <input type="text" class="form-control" id="bank_account_number" name="bank_account_number" required>
+                <input type="text" class="form-control" id="bank_account_number" name="bank_account_number" value="<?= htmlspecialchars($accountNumber) ?>" readonly>
             </div>
             <div class="form-group">
                 <label for="bank_name">Bank Name:</label>
@@ -116,7 +122,7 @@ if ($email) {
         <?php endif; ?>
 
         <div class="form-group row">
-        <div class="col">
+    <div class="col">
         <label for="firstName">First Name:</label>
         <input type="text" class="form-control" id="firstName" name="firstName" value="<?= htmlspecialchars($firstName) ?>" required>
     </div>
@@ -130,11 +136,12 @@ if ($email) {
         <label for="contact">Contact:</label>
         <input type="text" class="form-control" id="contact" name="contact" value="<?= htmlspecialchars($contact) ?>" required>
     </div>
-          <div class="col">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($email) ?>" readonly>
-          </div>
-        </div>
+    <div class="col">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($email) ?>" readonly>
+    </div>
+</div>
+
         <div class="form-group">
         <label for="province">Province (Region 4A - Calabarzon):</label>
     <select class="form-control" id="province" name="province" required>
