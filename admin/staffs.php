@@ -196,9 +196,7 @@ include 'sidebar.php';
             <select name="role" id="role" class="input" required>
               <option value="">Role</option>
               <option value="admin">Admin</option>
-              <option value="superadmin">Super Admin</option>
-              <option value="delivery boy">Delivery Boy</option>
-              <option value="waiter">Waiter</option>
+              
             </select>
             <label for="role" class="label">Role</label>
           </div>
@@ -253,8 +251,6 @@ include 'sidebar.php';
             <select name="role" id="editRole" class="input" required>
               <option value="">Role</option>
               <option value="admin">Admin</option>
-              <option value="superadmin">Super Admin</option>
-              <option value="delivery boy">Delivery Boy</option>
             </select>
             <label for="editRole" class="label">Role</label>
           </div>
