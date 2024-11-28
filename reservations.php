@@ -23,7 +23,7 @@ date_default_timezone_set('Asia/Colombo');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collecting form data
     $email = $_POST['email'];
-    $name = $_POST['name'];
+    $name = $_POST['firstName'];
     $contact = $_POST['contact'];
     $noOfGuests = $_POST['noOfGuests'];
     $reservedTime = $_POST['reservedTime']; // Input format is 'HH:MM'
