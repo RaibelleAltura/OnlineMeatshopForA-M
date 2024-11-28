@@ -42,6 +42,25 @@ foreach ($itemDetails as $item) {
 $deliveryFee = ($_POST['payment_mode'] === 'Takeaway') ? 0 : 130;
 $total = $subtotal + $deliveryFee;
 
+// Assuming user's email is stored in session
+$email = $_SESSION['email'] ?? '';
+
+$firstName = '';
+$lastName = '';
+$contact = '';
+
+if ($email) {
+    $stmt = $conn->prepare("SELECT firstName, lastName, contact FROM users WHERE email = ?");
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        $firstName = $row['firstName'];
+        $lastName = $row['lastName'];
+        $contact = $row['contact'];
+    }
+    $stmt->close();
+}
 
 ?>
 
@@ -97,20 +116,20 @@ $total = $subtotal + $deliveryFee;
         <?php endif; ?>
 
         <div class="form-group row">
-          <div class="col">
-            <label for="firstName">First Name:</label>
-            <input type="text" class="form-control" id="firstName" name="firstName" required>
-          </div>
-          <div class="col">
-            <label for="lastName">Last Name:</label>
-            <input type="text" class="form-control" id="lastName" name="lastName" required>
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="col">
-            <label for="contact">Contact:</label>
-            <input type="text" class="form-control" id="contact" name="contact" required>
-          </div>
+        <div class="col">
+        <label for="firstName">First Name:</label>
+        <input type="text" class="form-control" id="firstName" name="firstName" value="<?= htmlspecialchars($firstName) ?>" required>
+    </div>
+    <div class="col">
+        <label for="lastName">Last Name:</label>
+        <input type="text" class="form-control" id="lastName" name="lastName" value="<?= htmlspecialchars($lastName) ?>" required>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col">
+        <label for="contact">Contact:</label>
+        <input type="text" class="form-control" id="contact" name="contact" value="<?= htmlspecialchars($contact) ?>" required>
+    </div>
           <div class="col">
             <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($email) ?>" readonly>

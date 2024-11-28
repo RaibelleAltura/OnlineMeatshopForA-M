@@ -50,6 +50,7 @@
 <p class="privacy-policy">
     <a href="terms_and_conditions.php" target="_blank">Privacy Policy</a>
 </p>
+<a href="reset_password.php" style="text-decoration: none; color: #007BFF;">Forgot Password?</a>
 
 
 

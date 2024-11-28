@@ -31,6 +31,25 @@ if ($result = $conn->query($sql)) {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
 
+// Assuming user's email is stored in session
+$email = $_SESSION['email'] ?? '';
+
+$firstName = '';
+$lastName = '';
+$contact = '';
+
+if ($email) {
+    $stmt = $conn->prepare("SELECT firstName, lastName, contact FROM users WHERE email = ?");
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        $firstName = $row['firstName'];
+        $lastName = $row['lastName'];
+        $contact = $row['contact'];
+    }
+    $stmt->close();
+}
 // Close database connection
 $conn->close();
 ?>
@@ -337,20 +356,20 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
         <div class="reservation-section col-lg-5 col-md-6 col-sm-12">
           <h2 style="background-color: #feead4;">Reserve Now!</h2>
           <form id="reservation-form" action="reservations.php" method="POST">
-            <div class="form-row">
+          <div class="form-row">
               <div class="form-group">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" class="form-control" id="firstName" name="firstName" value="<?= htmlspecialchars($firstName) ?>" required>
               </div>
               <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($email) ?>" readonly>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="phone">Contact:</label>
-                <input type="tel" id="phone" name="contact" required>
+                <input type="text" class="form-control" id="contact" name="contact" value="<?= htmlspecialchars($contact) ?>" required>
               </div>
               <div class="form-group">
                 <label for="date">Date:</label>
