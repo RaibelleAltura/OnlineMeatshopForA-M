@@ -93,6 +93,44 @@
             align-items: center;
             justify-content: center;
         }
+         /* Modal Styles */
+         .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 9999;
+            overflow: auto;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            margin: 15% auto;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 8px;
+        }
+
+        .modal .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+            right: 25px;
+        }
+
+        .modal .close:hover,
+        .modal .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        
     </style>
 </head>
 
@@ -124,12 +162,12 @@
                         <i class="fas fa-eye-slash" id="toggleLoginPassword" style="cursor: pointer;"></i>
                     </div>
                     <p class="terms">
-                                By signing in, you agree to our 
-                                <a href="terms_and_conditions.php" target="_blank">Terms and Conditions</a>.
-                            </p>
-                            <p class="privacy-policy">
-                                <a href="terms_and_conditions.php" target="_blank">Privacy Policy</a>
-                            </p>
+                        By signing in, you agree to our 
+                        <a href="javascript:void(0);" onclick="openModal('termsModal')">Terms and Conditions</a>.
+                    </p>
+                    <p class="privacy-policy">
+                        <a href="javascript:void(0);" onclick="openModal('privacyModal')">Privacy Policy</a>
+                    </p>
                             <a href="reset_password.php" style="text-decoration: none; color: #007BFF;">Forgot Password?</a>
 
                     <input type="submit" value="Login" class="submit solid" id="loginButton" />
@@ -176,10 +214,82 @@
             </div>
         </div>
 
-      
+       <!-- Terms and Conditions Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('termsModal')">&times;</span>
+            <h2>Terms and Conditions</h2>
+            <p>
+                Welcome to our platform! These terms and conditions outline the rules and regulations for the use of our website. 
+                By accessing this website, we assume you accept these terms. Do not continue to use our website if you do not agree 
+                to all of the terms and conditions stated on this page.
+            </p>
+            <h2>Welcome to April and Marc Frozen Meat Trading</h2>
+            <p>By using our services, you agree to the following terms:</p>
+            <h3>1. Eligibility</h3>
+            <p>You must be at least 18 years old or of legal age in your jurisdiction to use our services.</p>
+
+            <h3>2. User Responsibilities</h3>
+            <p>You agree to use the services in accordance with the terms set forth, including respecting intellectual property rights, user privacy, and applicable laws.</p>
+
+            <h3>3. Acceptable Use Policy</h3>
+            <p>Prohibited activities include, but are not limited to, distributing harmful materials, harassment, and accessing unauthorized content.</p>
+
+            <h3>4. Account Security</h3>
+            <p>It is your responsibility to maintain the confidentiality of your account credentials.</p>
+
+            <h3>5. Limitation of Liability</h3>
+            <p>We are not liable for damages or losses resulting from the use of our services.</p>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('privacyModal')">&times;</span>
+            <h2>Privacy Policy</h2>
+            <p>
+                Your privacy is critically important to us. This privacy policy document describes the types of information we 
+                collect and record and how we use it.
+            </p>
+            <p>We value your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, and share information when you visit our site.</p>
+
+<h3>1. Data Collection</h3>
+<p>We collect information you provide when registering or placing orders, such as your name, email address, and contact number.</p>
+
+<h3>2. Data Usage</h3>
+<p>We use your data to process orders, provide customer support, and send promotional messages (if opted in).</p>
+
+<h3>3. Data Sharing</h3>
+<p>We do not share your information with third parties except for order fulfillment or legal obligations.</p>
+
+<div class="support">
+  <p>If you have any questions, feel free to <a href="mailto:support.aprilmarc@gmail.com">contact us via email</a>.</p>
+        </div>
+    </div>
+
+
     </div>
 
     <script>
+             // Open Modal
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        // Close Modal
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const termsModal = document.getElementById('termsModal');
+            const privacyModal = document.getElementById('privacyModal');
+            if (event.target === termsModal) termsModal.style.display = 'none';
+            if (event.target === privacyModal) privacyModal.style.display = 'none';
+        };
+        
         // Redirect to login after showing success popup
         function redirectToLogin() {
             window.location.href = "login.php";

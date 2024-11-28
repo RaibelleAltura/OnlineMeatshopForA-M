@@ -47,12 +47,12 @@
 
         <p>By using our website, you consent to the data practices described in this policy.</p>
         <div class="support">
-        <p>If you have any questions, feel free to <a href="mailto:support.aprilmarc@gmail.com">contact us via email</a>.</p>
+        <p>If you have any questions, feel free to <a href="mailto:marcjustineb.ramos082106@gmail.com">contact us at email: marcjustineb.ramos082106@gmail.com </a>.</p>
     </div>
 
     <div class="login-section">
         <!-- Login button styled as a button instead of link -->
-        <a href="login.php" class="btn solid">Back to Login</a>
+        <a href="index.php" class="btn solid">Back to Main</a>
 
     </div>
           </div>
