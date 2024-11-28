@@ -29,20 +29,23 @@ $stmt_check->execute();
 $result_check = $stmt_check->get_result();
 
 if ($result_check->num_rows > 0) {
+    $conn->close();
     header('Location: login.php?error=email_exists');
     exit();
-} else {
-    // Insert user into the database
-    $sql_insert = "INSERT INTO users (firstName, lastName, email, contact, password) VALUES (?, ?, ?, ?, ?)";
-    $stmt_insert = $conn->prepare($sql_insert);
-    $stmt_insert->bind_param("sssss", $firstName, $lastName, $email, $contact, $passwordHash);
-    
-    if ($stmt_insert->execute()) {
-        header('Location: login.php?success=registered');
-    } else {
-        header('Location: login.php?error=registration_failed');
-    }
 }
 
-$conn->close();
+// Insert user into the database
+$sql_insert = "INSERT INTO users (firstName, lastName, email, contact, password) VALUES (?, ?, ?, ?, ?)";
+$stmt_insert = $conn->prepare($sql_insert);
+$stmt_insert->bind_param("sssss", $firstName, $lastName, $email, $contact, $passwordHash);
+
+if ($stmt_insert->execute()) {
+    $conn->close();
+    header('Location: login.php?signup=success');
+    exit();
+} else {
+    $conn->close();
+    header('Location: login.php?error=registration_failed');
+    exit();
+}
 ?>

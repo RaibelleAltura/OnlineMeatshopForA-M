@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="login.css" />
     <title>Login/Register</title>
     <style>
-        /* Eye Toggle Icon Styles */
-        .input-field .fa-eye,
+       /* Eye Toggle Icon Styles */
+       .input-field .fa-eye,
         .input-field .fa-eye-slash {
             position: absolute;
             right: 10px;
@@ -23,11 +23,59 @@
         .input-field .fa-eye-slash:hover {
             color: #0056b3;
         }
+
+        /* Popup Styles */
+        #successPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+            z-index: 1000;
+        }
+
+        #successPopup button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #successPopup button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Overlay */
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
     </style>
 </head>
 
 <body>
     <?php include_once("navbar.php"); ?>
+     <!-- Success Popup -->
+     <div id="overlay"></div>
+    <div id="successPopup">
+        <h2>Sign Up Successfully!</h2>
+        <p>Your account has been successfully created. Please log in to continue.</p>
+        <button onclick="redirectToLogin()">Okay</button>
+    </div>
     <div class="container">
         <div class="forms-container">
             <div class="signin-signup">
@@ -122,6 +170,20 @@
     </div>
 
     <script>
+        // Redirect to login after showing success popup
+        function redirectToLogin() {
+            window.location.href = "login.php";
+        }
+
+        // Display popup if redirected from registration
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('signup') && urlParams.get('signup') === 'success') {
+                document.getElementById('overlay').style.display = 'block';
+                document.getElementById('successPopup').style.display = 'block';
+            }
+        });
+
         // Toggle password visibility for login form
         const toggleLoginPassword = document.querySelector('#toggleLoginPassword');
         const loginPassword = document.querySelector('#loginPassword');
