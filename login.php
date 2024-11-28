@@ -64,6 +64,35 @@
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 999;
         }
+        /* Main container */
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f9f9f9;
+        }
+
+        /* Left column for the logo */
+        .logo-container {
+            flex: 1;
+            display: flex;
+            justify-content: left;
+            align-items: left;
+        }
+
+        .logo-container img {
+            max-width: 60%; /* Adjust size as needed */
+            max-height: 50%;
+        }
+
+        /* Right column for the form */
+        .form-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 </head>
 
@@ -77,6 +106,9 @@
         <button onclick="redirectToLogin()">Okay</button>
     </div>
     <div class="container">
+    <div class="logo-container">
+            <img src="images/logo.jpg" alt="Logo">
+        </div>
         <div class="forms-container">
             <div class="signin-signup">
                 <!-- Sign In Form -->
@@ -92,18 +124,18 @@
                         <i class="fas fa-eye-slash" id="toggleLoginPassword" style="cursor: pointer;"></i>
                     </div>
                     <p class="terms">
-    By signing in, you agree to our 
-    <a href="terms_and_conditions.php" target="_blank">Terms and Conditions</a>.
-</p>
-<p class="privacy-policy">
-    <a href="terms_and_conditions.php" target="_blank">Privacy Policy</a>
-</p>
-<a href="reset_password.php" style="text-decoration: none; color: #007BFF;">Forgot Password?</a>
-
-
-
+                                By signing in, you agree to our 
+                                <a href="terms_and_conditions.php" target="_blank">Terms and Conditions</a>.
+                            </p>
+                            <p class="privacy-policy">
+                                <a href="terms_and_conditions.php" target="_blank">Privacy Policy</a>
+                            </p>
+                            <a href="reset_password.php" style="text-decoration: none; color: #007BFF;">Forgot Password?</a>
 
                     <input type="submit" value="Login" class="submit solid" id="loginButton" />
+                    <button class="btn transparent" id="sign-up-btn">
+                        Sign up
+                    </button>
 
                     <?php
                     if (isset($_GET['error'])) {
@@ -137,36 +169,14 @@
                         <i class="fas fa-eye-slash" id="toggleRegisterPassword" style="cursor: pointer;"></i>
                     </div>
                     <input type="submit" class="submit" value="Sign up" id="registerButton" />
+                    <button class="btn transparent" id="sign-in-btn">
+                        Sign in
+                    </button>
                 </form>
             </div>
         </div>
 
-        <div class="panels-container">
-            <div class="panel left-panel">
-                <div class="content">
-                    <h3>New to Our Restaurant?</h3>
-                    <p>
-                        Join us today and enjoy the convenience of online ordering. Get exclusive offers and track your orders easily.
-                    </p>
-                    <button class="btn transparent" id="sign-up-btn">
-                        Sign up
-                    </button>
-                </div>
-                <img src="images/form-pic.png" class="image" alt="" />
-            </div>
-            <div class="panel right-panel">
-                <div class="content">
-                    <h3>Our Customer?</h3>
-                    <p>
-                        Sign in to continue enjoying our delicious meals and manage your orders seamlessly.
-                    </p>
-                    <button class="btn transparent" id="sign-in-btn">
-                        Sign in
-                    </button>
-                </div>
-                <img src="images/form-pic2.png" class="image" alt="" />
-            </div>
-        </div>
+      
     </div>
 
     <script>
