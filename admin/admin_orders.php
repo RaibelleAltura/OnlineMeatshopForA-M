@@ -156,8 +156,8 @@ $result = $conn->query($query);
                     <td>" . ($row['order_status'] == 'Cancelled' ? htmlspecialchars($row['cancel_reason']) : '-') . "</td>
                     <td>";
                     
-            // Check for "Takeaway" or "Cash" payment mode
-            if ($row['pmode'] == 'Takeaway' || $row['pmode'] == 'Cash') {
+            // Check for "Store Pick Up" or "Cash on Delivery" payment mode
+            if ($row['pmode'] == 'Store Pick Up' || $row['pmode'] == 'Cash on Delivery') {
                 echo "No Proof Needed";
             } elseif (!empty($row['proof_of_payment'])) {
                 echo "<a href='../uploads/" . htmlspecialchars($row['proof_of_payment']) . "' target='_blank'>View Proof</a>";

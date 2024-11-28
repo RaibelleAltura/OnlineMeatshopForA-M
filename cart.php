@@ -128,12 +128,12 @@ if ($itemsResult->num_rows == 0) {
       <div class="summary-details payment">
         <p><strong>Payment Method:</strong></p>
         <div>
-          <input type="radio" id="takeaway" name="payment_mode" value="Takeaway" checked>
-          <label for="Takeaway">Takeaway</label>
+          <input type="radio" id="store pick up" name="payment_mode" value="Store Pick Up" checked>
+          <label for="Store Pick Up">Store Pick Up</label>
         </div>
         <div>
-          <input type="radio" id="cash" name="payment_mode" value="Cash">
-          <label for="Cash">Cash</label>
+          <input type="radio" id="cash on delivery" name="payment_mode" value="Cash On Delivery">
+          <label for="Cash On Delivery">Cash On Delivery</label>
         </div>
         <div>
           <input type="radio" id="card" name="payment_mode" value="Card">
@@ -200,7 +200,14 @@ if ($itemsResult->num_rows == 0) {
       // Function to update delivery fee based on payment mode
       function updateDeliveryFee() {
         const selectedPaymentMode = document.querySelector('input[name="payment_mode"]:checked').value;
-        deliveryFee = selectedPaymentMode === 'Takeaway' ? 0 : 130;
+        deliveryFee = selectedPaymentMode === 'Store Pick Up' ? 0 : 0;
+        updateSummary();
+      }
+
+      // Function to update delivery fee based on payment mode
+      function updateDeliveryFee() {
+        const selectedPaymentMode = document.querySelector('input[name="payment_mode"]:checked').value;
+        deliveryFee = selectedPaymentMode === 'Card' ? 150 : 0;
         updateSummary();
       }
 
