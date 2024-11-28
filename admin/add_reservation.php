@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $name = $_POST['name'];
     $contact = $_POST['contact'];
-    $noOfGuests = $_POST['noOfGuests'];
+    $noOfBox = $_POST['noOfBox'];
     $reservedTime = $_POST['reservedTime']; // Input format is 'HH:MM'
     $reservedDate = $_POST['reservedDate']; // Input format is 'YYYY-MM-DD'
 
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Processed Reserved Time: " . htmlspecialchars($reservedTimeWithSeconds) . "<br>";
 
     // Prepare SQL statement to insert data into reservations table
-    $sql = "INSERT INTO reservations (email, name, contact, noOfGuests, reservedTime, reservedDate) 
+    $sql = "INSERT INTO reservations (email, name, contact, noOfBox, reservedTime, reservedDate) 
             VALUES (?, ?, ?, ?, ?, ?)";
 
     // Prepare and bind parameters
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt === false) {
         die("Prepare failed: " . $conn->error);
     }
-    $stmt->bind_param("sssiis", $email, $name, $contact, $noOfGuests, $reservedTimeWithSeconds, $reservedDate);
+    $stmt->bind_param("sssiis", $email, $name, $contact, $noOfBox, $reservedTimeWithSeconds, $reservedDate);
 
     // Execute the statement
     if ($stmt->execute()) {

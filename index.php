@@ -383,7 +383,7 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
               </div>
               <div class="form-group">
                 <label for="guests">Quantity of Box:</label>
-                <input type="number" id="guests" name="noOfGuests" required min="1">
+                <input type="number" id="guests" name="noOfBox" required min="1">
               </div>
             </div>
             <button type="submit" value="submit">Reserve Now</button>

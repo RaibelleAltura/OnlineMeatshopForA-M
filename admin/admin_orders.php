@@ -162,7 +162,7 @@ $result = $conn->query($query);
             } elseif (!empty($row['proof_of_payment'])) {
                 echo "<a href='../uploads/" . htmlspecialchars($row['proof_of_payment']) . "' target='_blank'>View Proof</a>";
             } else {
-                echo "No proof uploaded";
+                echo "No proof Needed";
             }
             
             echo "</td>

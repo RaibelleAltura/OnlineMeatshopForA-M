@@ -196,7 +196,7 @@ include 'sidebar.php';
       <td>{$row['email']}</td>
       <td>{$row['name']}</td>
       <td>{$row['contact']}</td>
-      <td>{$row['noOfGuests']}</td>
+      <td>{$row['noOfBox']}</td>
       <td>{$row['reservedDate']}</td>
       <td>{$row['reservedTime']}</td>
       <td>
@@ -209,7 +209,7 @@ include 'sidebar.php';
         </select>
       </td>
       <td>
-        <button id='editbtn' onclick='openEditReservationModal(this)' data-id='{$row['reservation_id']}' data-email='{$row['email']}' data-name='{$row['name']}' data-contact='{$row['contact']}' data-reservedDate='{$row['reservedDate']}' data-reservedTime='{$row['reservedTime']}' data-noOfGuests='{$row['noOfGuests']}' data-status='{$row['status']}'><i class='fas fa-edit'></i></button>
+        <button id='editbtn' onclick='openEditReservationModal(this)' data-id='{$row['reservation_id']}' data-email='{$row['email']}' data-name='{$row['name']}' data-contact='{$row['contact']}' data-reservedDate='{$row['reservedDate']}' data-reservedTime='{$row['reservedTime']}' data-noOfBox='{$row['noOfBox']}' data-status='{$row['status']}'><i class='fas fa-edit'></i></button>
         <button id='deletebtn' onclick=\"deleteItem('{$row['reservation_id']}')\"><i class='fas fa-trash'></i></button>
       </td>
     </tr>";
@@ -256,8 +256,8 @@ include 'sidebar.php';
 
           <div class="modal-content">
             <div class="input-group">
-              <input type="number" name="noOfGuests" id="noOfGuests" class="input" required>
-              <label for="noOfGuests" class="label">No Of Guest</label>
+              <input type="number" name="noOfBox" id="noOfBox" class="input" required>
+              <label for="noOfBox" class="label">No Of Box</label>
             </div>
           </div>
 
@@ -312,8 +312,8 @@ include 'sidebar.php';
       </div>
       <div class="modal-content">
         <div class="input-group">
-          <input type="number" name="noOfGuests" id="editNoOfGuests" class="input" required>
-          <label for="editNoOfGuests" class="label">No Of Guests</label>
+          <input type="number" name="noOfBox" id="editNoOfBox" class="input" required>
+          <label for="editNoOfBox" class="label">No Of Box</label>
         </div>
       </div>
       <div class="modal-content">
@@ -428,7 +428,7 @@ include 'sidebar.php';
   const email = button.getAttribute('data-email');
   const name = button.getAttribute('data-name');
   const contact = button.getAttribute('data-contact');
-  const noOfGuests = button.getAttribute('data-noOfGuests');
+  const noOfBox = button.getAttribute('data-noOfBox');
   const reservedDate = button.getAttribute('data-reservedDate');
   const reservedTime = button.getAttribute('data-reservedTime');
   const status = button.getAttribute('data-status');
@@ -437,7 +437,7 @@ include 'sidebar.php';
   document.getElementById('editEmail').value = email;
   document.getElementById('editName').value = name;
   document.getElementById('editContact').value = contact;
-  document.getElementById('editNoOfGuests').value = noOfGuests;
+  document.getElementById('editNoOfBox').value = noOfBox;
   document.getElementById('editReservedDate').value = reservedDate;
   document.getElementById('editReservedTime').value = reservedTime;
 
