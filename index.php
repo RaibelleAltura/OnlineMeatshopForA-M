@@ -134,7 +134,7 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
             </div>
           </div>
           <div class="col-md-7 col-sm-12 col-lg-7 d-flex justify-content-center align-items-start slide-in-right main-image">
-            <img src="images/logo1.png" class="img" style=" width: 85%; height: 80%;">
+            <img src="images/LOGO.png" class="img" style=" width: 85%; height: 80%;">
           </div>
         </div>
         <div class="row">
@@ -220,7 +220,7 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
     <div class="container">
       <div class="row why-us-content">
         <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12 mt-5 reveal d-flex justify-content-start align-items-start" data-aos="fade-up">
-          <img src="images/Why-Us.png" width="100%" height="auto" loading="lazy" alt="delivery boy" class="w-100 delivery-img" data-delivery-boy>
+          <img src="images/logo1.png" width="100%" height="auto" loading="lazy" alt="delivery boy" class="w-100 delivery-img" data-delivery-boy>
         </div>
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 d-flex flex-column justify-content-center reveal" data-aos="fade-up">
           <h1>WHY <span>CHOOSE US?</span></h1>
@@ -327,15 +327,12 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
         </div>
         <div class="story-content row mb-2">
           <div class="story-text col-lg-6 col-md-6 col-sm-12 reveal mt-2" data-aos="fade-up" data-os-interval="300">
-            <p>At <strong>April and Marc Frozen Meat Trading</strong>, we are passionate about celebrating food. Our chefs bring a touch of creativity to every dish, ensuring a feast for your senses. Join us for an extraordinary dining experience that celebrates flavor and joy.</p>
-            <p>Founded in [2018], April and Marc Frozen Meat Trading has been at the forefront of culinary innovation. Our commitment to using the freshest ingredients, combined with our chefs' expertise, has earned us a reputation for excellence. We believe that dining is not just about eating; it's about experiencing the art of food.</p>
-            <p>Whether you're looking for a romantic dinner, a family gathering, or a place to celebrate special occasions, Grill 'N' Chill offers the perfect ambiance and exquisite cuisine to make your visit unforgettable. Come and experience the joy of flavor with us!</p>
+            <p>At <strong>April and Marc Frozen Meat Trading</strong>, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+            <p>Founded in [2018], April and Marc Frozen Meat Trading  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
             <a href="menu.php" class="about_btn">
               <i class="fa-solid fa-burger"></i>Order Now
             </a>
-          </div>
-          <div class="story-image col-lg-6 col-md-6 col-sm-12 d-flex justify-content-end align-items-start slide-in-right" data-aos="fade-up">
-            <img src="images/logo1.png" alt="Crafting Memorable Meals" style="width: 100%; height: auto;">
           </div>
         </div>
       </div>
@@ -351,7 +348,7 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
     <div class="table ms-4 me-5" data-aos="fade-up">
       <div class="reservation row reveal">
         <div class="reservation-image col-lg-7 col-md-6 col-sm-12" style="background: none !important; padding: 0 !important;">
-          <img src="images/logo1.png" alt="Reservation" style="background: none ; width: 100%; height: 100%; padding: 0 !important;" class=" w-100 h-100">
+          <img src="images/LOGO.png" alt="Reservation" style="background: none ; width: 100%; height: 100%; padding: 0 !important;" class=" w-100 h-100">
         </div>
         <div class="reservation-section col-lg-5 col-md-6 col-sm-12">
           <h2 style="background-color: #feead4;">Reserve Now!</h2>

@@ -642,6 +642,25 @@ body {
   opacity: 0.8;
 }
 
+.story-content {
+  display: flex; /* Enables Flexbox for the parent container */
+  flex-direction: column; /* Stacks items vertically by default */
+  align-items: center; /* Horizontally centers the child elements */
+  text-align: center; /* Centers text inside child elements */
+  margin: 0 auto; /* Ensures the content stays in the center */
+}
+
+.story-text {
+  max-width: 800px; /* Optional: limits the width for better readability */
+  margin-bottom: 20px; /* Adds spacing between the content and button */
+}
+
+.about_btn {
+  margin-top: 20px; /* Adds spacing above the button */
+  text-align: center; /* Ensures the button stays centered */
+}
+
+
 /* Footer Styles */
 footer {
   background-color: #333;
