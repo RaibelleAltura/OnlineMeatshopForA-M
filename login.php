@@ -144,9 +144,9 @@
         <button onclick="redirectToLogin()">Okay</button>
     </div>
     <div class="container">
-    <div class="logo-container">
+   <!--  <div class="logo-container">
             <img src="images/logo.jpg" alt="Logo">
-        </div>
+        </div> -->
         <div class="forms-container">
             <div class="signin-signup">
                 <!-- Sign In Form -->
