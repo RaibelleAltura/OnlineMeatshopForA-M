@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 02:52 AM
+-- Generation Time: Nov 29, 2024 at 05:04 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -134,7 +134,7 @@ CREATE TABLE `orders` (
   `order_date` timestamp NOT NULL DEFAULT current_timestamp(),
   `order_status` enum('Pending','Completed','Cancelled','Processing','On the way') NOT NULL DEFAULT 'Pending',
   `cancel_reason` varchar(255) DEFAULT NULL,
-  `note` varchar(255) NOT NULL,
+  `province` varchar(255) NOT NULL,
   `proof_of_payment` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -142,7 +142,7 @@ CREATE TABLE `orders` (
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `email`, `firstName`, `lastName`, `phone`, `address`, `pmode`, `payment_status`, `sub_total`, `grand_total`, `order_date`, `order_status`, `cancel_reason`, `note`, `proof_of_payment`) VALUES
+INSERT INTO `orders` (`order_id`, `email`, `firstName`, `lastName`, `phone`, `address`, `pmode`, `payment_status`, `sub_total`, `grand_total`, `order_date`, `order_status`, `cancel_reason`, `province`, `proof_of_payment`) VALUES
 (69, 'cyxdev24@gmail.com', 'sample1', 'sdfsd', '23123', 'asd', 'Card', 'Pending', '300.00', '430.00', '2024-11-21 12:15:34', 'Pending', '', 'sadads', '2.jpg'),
 (70, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Barangay,Uno Lipa City purok 3 108', 'Card', 'Successful', '300.00', '430.00', '2024-11-25 00:01:33', 'Completed', '', '', 'meat-bg.jpg'),
 (71, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Brgy Ulango, Tanauan City purok 8, 896', '', 'Successful', '300.00', '430.00', '2024-11-25 00:09:30', 'Completed', '', '', NULL),
@@ -150,7 +150,11 @@ INSERT INTO `orders` (`order_id`, `email`, `firstName`, `lastName`, `phone`, `ad
 (73, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Lipa City', '', 'Pending', '300.00', '430.00', '2024-11-28 02:47:55', 'Pending', NULL, '', NULL),
 (74, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Barangay Uno, Lipa City', 'Card', 'Successful', '800.00', '930.00', '2024-11-28 03:26:32', 'Completed', '', '', 'butcher-bg.jpg'),
 (75, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'calamba', 'Cash On Delivery', 'Successful', '300.00', '430.00', '2024-11-28 13:18:19', 'Completed', '', '', NULL),
-(76, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Lipa', 'Store Pick Up', 'Successful', '300.00', '430.00', '2024-11-28 13:20:53', 'Completed', '', '', NULL);
+(76, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Lipa', 'Store Pick Up', 'Successful', '300.00', '430.00', '2024-11-28 13:20:53', 'Completed', '', '', NULL),
+(77, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Batangas', 'Cash On Delivery', 'Pending', '300.00', '430.00', '2024-11-29 15:47:27', 'Pending', NULL, 'Batangas', NULL),
+(78, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Lipa City', 'Store Pick Up', 'Pending', '200.00', '330.00', '2024-11-29 15:52:46', 'Pending', NULL, 'Batangas', NULL),
+(79, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Infanta', 'Cash On Delivery', 'Pending', '200.00', '330.00', '2024-11-29 15:53:28', 'Pending', NULL, 'Quezon', NULL),
+(80, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Dasmarinas', 'Cash On Delivery', 'Pending', '300.00', '430.00', '2024-11-29 15:59:50', 'Pending', NULL, 'Cavite', NULL);
 
 -- --------------------------------------------------------
 
@@ -180,7 +184,11 @@ INSERT INTO `order_items` (`id`, `order_id`, `itemName`, `image`, `quantity`, `p
 (150, 73, 'Beef Shank', 'beef Shank(Bulalo).webp', 1, '300', '300.00'),
 (151, 74, 'Chicken Wings', 'Chicken Wings.jpg', 4, '200', '800.00'),
 (152, 75, 'Beef Shank', 'beef Shank(Bulalo).webp', 1, '300', '300.00'),
-(153, 76, 'Beef Shank', 'beef Shank(Bulalo).webp', 1, '300', '300.00');
+(153, 76, 'Beef Shank', 'beef Shank(Bulalo).webp', 1, '300', '300.00'),
+(154, 77, 'Pork Back Fat Skinless', 'Pork backfat Skinless.jpeg', 1, '300', '300.00'),
+(155, 78, 'Beef Tripe', 'Beef Tripe.jpg', 1, '200', '200.00'),
+(156, 79, 'Chicken Wings', 'Chicken Wings.jpg', 1, '200', '200.00'),
+(157, 80, 'Pork Back Fat Skin', 'Pork Backfat Skin.jfif', 1, '300', '300.00');
 
 -- --------------------------------------------------------
 
@@ -275,7 +283,6 @@ INSERT INTO `staff` (`id`, `firstName`, `lastName`, `email`, `contact`, `role`, 
 (15, 'John', 'Doe', 'admin1@example.com', '1234567890', 'admin', '1234', '2024-11-21 11:55:21', '2024-11-21 11:55:21', 'default.jpg'),
 (16, 'John', 'Doe', 'john.doe@example.com', '1234567890', 'admin', 'yourpassword', '2024-11-21 12:00:54', '2024-11-21 12:00:54', 'default.jpg'),
 (17, 'sample1', 'asd', 'admin2@example.com', 'sdas', 'superadmin', '$2y$10$j9fPLbmFRWJmyROoPPaSUekI0NI57a/VLqzaChvFUdL7u1gyCVmMm', '2024-11-21 12:05:31', '2024-11-21 12:05:31', 'default.jpg'),
-(22, 'andre', 'burnok', 'andre@gmail.com', '09095957030', 'waiter', '$2y$10$MG2SbILeFr/mZdCJOVEH3eEkQ32HiounGJkM7o5iS0fF2j/v6G.wG', '2024-11-26 07:20:11', '2024-11-26 07:20:11', 'default.jpg'),
 (23, 'admin', 'admin', 'admin@gmail.com', '09215943111', 'admin', '$2y$10$OP7TQAcbBHJowUbgQy26zusWlVuJyogX4JPi/FFJ7j8FFrtKPhYpW', '2024-11-28 13:55:18', '2024-11-28 13:55:18', 'default.jpg');
 
 -- --------------------------------------------------------
@@ -377,7 +384,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT for table `menucategory`
@@ -395,13 +402,13 @@ ALTER TABLE `menuitem`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
 
 --
 -- AUTO_INCREMENT for table `reservations`
