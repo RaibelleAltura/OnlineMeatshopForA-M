@@ -378,12 +378,12 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="reservedTime">Time:</label>
-                <input type="time" id="time" name="reservedTime" required>
+                <label for="typeOfProduct">Type of Product</label>
+                <input type="text" id="product" name="typeOfProduct" required>
               </div>
               <div class="form-group">
-                <label for="guests">Quantity of Box:</label>
-                <input type="number" id="guests" name="noOfBox" required min="1">
+                <label for="box">Quantity of Box:</label>
+                <input type="number" id="box" name="noOfBox" required min="1">
               </div>
             </div>
             <button type="submit" value="submit">Reserve Now</button>

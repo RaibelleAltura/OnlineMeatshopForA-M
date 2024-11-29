@@ -23,20 +23,14 @@ date_default_timezone_set('Asia/Colombo');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Collecting form data
     $email = $_POST['email'];
-    $name = $_POST['firstName'];
+    $name = $_POST['firstName'];  // Make sure the form input name matches
     $contact = $_POST['contact'];
     $noOfBox = $_POST['noOfBox'];
-    $reservedTime = $_POST['reservedTime']; // Input format is 'HH:MM'
+    $typeOfProduct = $_POST['typeOfProduct']; // Replacing reservedTime
     $reservedDate = $_POST['reservedDate']; // Input format is 'YYYY-MM-DD'
 
-    
-
-    // Process reservedTime to ensure it includes seconds
-    $reservedTimeWithSeconds = date('H:i:s', strtotime($reservedTime));
-    
-   
     // Prepare SQL statement to insert data into reservations table
-    $sql = "INSERT INTO reservations (email, name, contact, noOfBox, reservedTime, reservedDate) 
+    $sql = "INSERT INTO reservations (email, name, contact, noOfBox, typeOfProduct, reservedDate) 
             VALUES (?, ?, ?, ?, ?, ?)";
 
     // Prepare and bind parameters
@@ -44,7 +38,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt === false) {
         die("Prepare failed: " . $conn->error);
     }
-    $stmt->bind_param("sssiis", $email, $name, $contact, $noOfBox, $reservedTimeWithSeconds, $reservedDate);
+    // Correct bind_param types:
+    // "sssis" - First 4 variables are strings, $noOfBox is an integer, and $reservedDate is a string
+    $stmt->bind_param("ssssss", $email, $name, $contact, $noOfBox, $typeOfProduct, $reservedDate);
+
 
     // Execute the statement
     if ($stmt->execute()) {

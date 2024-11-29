@@ -25,20 +25,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST['name'];
     $contact = $_POST['contact'];
     $noOfBox = $_POST['noOfBox'];
-    $reservedTime = $_POST['reservedTime']; // Input format is 'HH:MM'
+    $typeOfProduct = $_POST['typeOfProduct']; // This field will replace reservedTime
     $reservedDate = $_POST['reservedDate']; // Input format is 'YYYY-MM-DD'
 
-    // Debug: Check the raw reservedTime input
-    echo "Raw Reserved Time: " . htmlspecialchars($reservedTime) . "<br>";
+    // Debug: Check the raw typeOfProduct input
+    echo "Raw Type of Product: " . htmlspecialchars($typeOfProduct) . "<br>";
 
-    // Process reservedTime to ensure it includes seconds
-    $reservedTimeWithSeconds = date('H:i:s', strtotime($reservedTime));
-    
-    // Debug: Check the processed reservedTime
-    echo "Processed Reserved Time: " . htmlspecialchars($reservedTimeWithSeconds) . "<br>";
+    // No need for time processing here, as typeOfProduct is just text
+    // Remove any time-related processing that was originally intended for reservedTime
 
     // Prepare SQL statement to insert data into reservations table
-    $sql = "INSERT INTO reservations (email, name, contact, noOfBox, reservedTime, reservedDate) 
+    $sql = "INSERT INTO reservations (email, name, contact, noOfBox, typeOfProduct, reservedDate) 
             VALUES (?, ?, ?, ?, ?, ?)";
 
     // Prepare and bind parameters
@@ -46,7 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt === false) {
         die("Prepare failed: " . $conn->error);
     }
-    $stmt->bind_param("sssiis", $email, $name, $contact, $noOfBox, $reservedTimeWithSeconds, $reservedDate);
+
+    // Bind parameters - "sssiis" (4 strings, 1 integer, 1 string)
+    $stmt->bind_param("sssiis", $email, $name, $contact, $noOfBox, $typeOfProduct, $reservedDate);
 
     // Execute the statement
     if ($stmt->execute()) {

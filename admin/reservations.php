@@ -180,7 +180,7 @@ include 'sidebar.php';
             <th>Contact</th>
             <th>Number Of Boxes</th>
             <th>Reserved Date</th>
-            <th>Reserved Time</th>
+            <th>Type of Product</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -198,7 +198,7 @@ include 'sidebar.php';
       <td>{$row['contact']}</td>
       <td>{$row['noOfBox']}</td>
       <td>{$row['reservedDate']}</td>
-      <td>{$row['reservedTime']}</td>
+      <td>{$row['typeOfProduct']}</td>
       <td>
         <select id='status-{$row['reservation_id']}' onchange=\"updateStatus('{$row['reservation_id']}', this.value)\" class='status-select'>
           <option value='Pending' " . ($row['status'] == 'Pending' ? 'selected' : '') . ">Pending</option>
@@ -209,7 +209,7 @@ include 'sidebar.php';
         </select>
       </td>
       <td>
-        <button id='editbtn' onclick='openEditReservationModal(this)' data-id='{$row['reservation_id']}' data-email='{$row['email']}' data-name='{$row['name']}' data-contact='{$row['contact']}' data-reservedDate='{$row['reservedDate']}' data-reservedTime='{$row['reservedTime']}' data-noOfBox='{$row['noOfBox']}' data-status='{$row['status']}'><i class='fas fa-edit'></i></button>
+        <button id='editbtn' onclick='openEditReservationModal(this)' data-id='{$row['reservation_id']}' data-email='{$row['email']}' data-name='{$row['name']}' data-contact='{$row['contact']}' data-reservedDate='{$row['reservedDate']}' data-typeOfProduct='{$row['typeOfProduct']}' data-noOfBox='{$row['noOfBox']}' data-status='{$row['status']}'><i class='fas fa-edit'></i></button>
         <button id='deletebtn' onclick=\"deleteItem('{$row['reservation_id']}')\"><i class='fas fa-trash'></i></button>
       </td>
     </tr>";
@@ -270,8 +270,8 @@ include 'sidebar.php';
 
           <div class="modal-content">
             <div class="input-group">
-              <input type="time" name="reservedTime" id="reservedTime" class="input" required>
-              <label for="reservedTime" class="label">Reserved Time</label>
+              <input type="text" name="typeOfProduct" id="typeOfProduct" class="input" required>
+              <label for="typeOfProduct" class="label">Type of Product</label>
             </div>
           </div>
 
@@ -324,8 +324,8 @@ include 'sidebar.php';
       </div>
       <div class="modal-content">
         <div class="input-group">
-          <input type="time" name="reservedTime" id="editReservedTime" class="input" required>
-          <label for="editReservedTime" class="label">Reserved Time</label>
+          <input type="text" name="typeOfProduct" id="editTypeOfProduct" class="input" required>
+          <label for="editTypeOfProduct" class="label">Type of Product</label>
         </div>
       </div>
       <div class="modal-footer">
@@ -430,7 +430,7 @@ include 'sidebar.php';
   const contact = button.getAttribute('data-contact');
   const noOfBox = button.getAttribute('data-noOfBox');
   const reservedDate = button.getAttribute('data-reservedDate');
-  const reservedTime = button.getAttribute('data-reservedTime');
+  const typeOfProduct = button.getAttribute('data-typeOfProduct');
   const status = button.getAttribute('data-status');
 
   // Set the values in the editReservationForm
@@ -439,7 +439,7 @@ include 'sidebar.php';
   document.getElementById('editContact').value = contact;
   document.getElementById('editNoOfBox').value = noOfBox;
   document.getElementById('editReservedDate').value = reservedDate;
-  document.getElementById('editReservedTime').value = reservedTime;
+  document.getElementById('editTypeOfProduct').value = typeOfProduct;
 
   // Optionally, you can set a hidden input for reservation_id if you need it for submission
   const form = document.getElementById('editReservationForm');
