@@ -199,8 +199,8 @@ include 'sidebar.php';
             <p><?php echo $order['address']; ?></p>
           </div>
           <div class="summary-details">
-            <p><strong>Order Note:</strong></p>
-            <p><?php echo $order['note']; ?></p>
+            <p><strong>Province:</strong></p>
+            <p><?php echo $order['province']; ?></p>
           </div>
         </div>
       </div>

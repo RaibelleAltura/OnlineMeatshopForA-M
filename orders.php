@@ -476,6 +476,10 @@ include_once ('footer.html');
                                     <div><p>${order.address}</p></div>
                                 </div>
                                 <div class="customer-details">
+                                    <div><p><strong>Province: </strong></p></div>
+                                    <div><p>${order.province || 'Null'}</p></div>
+                                </div>
+                                <div class="customer-details">
                                     <div><p><strong>Contact: </strong></p></div>
                                     <div><p>${order.phone}</p></div>
                                 </div>
@@ -486,10 +490,6 @@ include_once ('footer.html');
                                 <div class="customer-details">
                                     <div><p><strong>Order Date: </strong></p></div>
                                     <div><p>${new Date(order.order_date).toLocaleString()}</p></div>
-                                </div>
-                                <div class="customer-details">
-                                    <div><p><strong>Province: </strong></p></div>
-                                    <div><p>${order.province || 'Null'}</p></div>
                                 </div>
                             </div>
                             <div class="order-items" style="font-size: 1.1rem;">
