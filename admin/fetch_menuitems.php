@@ -5,7 +5,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "restaurant";
+$dbname = "meatshop";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);

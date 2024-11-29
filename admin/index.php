@@ -10,7 +10,7 @@ if (!isset($_SESSION['adminloggedin']) || !$_SESSION['adminloggedin']) {
 
 // Database connection
 $host = 'localhost';
-$dbname = 'restaurant';
+$dbname = 'meatshop';
 $username = 'root';
 $password = '';
 $conn = new mysqli($host, $username, $password, $dbname);
@@ -308,7 +308,7 @@ include 'sidebar.php';
                 $servername = "localhost";
                 $username = "root";
                 $password = "";
-                $dbname = "restaurant";
+                $dbname = "meatshop";
 
                 $conn = new mysqli($servername, $username, $password, $dbname);
 

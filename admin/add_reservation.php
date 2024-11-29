@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "restaurant";
+$dbname = "meatshop";
 
 // Enable error reporting (optional, for debugging)
 ini_set('display_errors', 1);
