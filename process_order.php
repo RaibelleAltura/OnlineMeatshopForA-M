@@ -21,7 +21,7 @@ $lastName = $_POST['lastName'] ?? '';
 $email = $_POST['email'] ?? '';
 $address = $_POST['address'] ?? '';
 $contact = $_POST['contact'] ?? '';
-$orderNote = $_POST['order_note'] ?? '';
+$province = $_POST['province'] ?? '';
 $paymentMode = $_POST['payment_mode'] ?? '';
 $total = $_POST['total'] ?? 0;
 $subtotal = $_POST['subtotal'] ?? 0;
@@ -74,11 +74,11 @@ try {
     // DITO YUNG PROOF OF PAYMENT INSERTION
 
     
-    $stmt = $conn->prepare('INSERT INTO orders (firstName, lastName, email, phone, address, sub_total, grand_total, pmode, note, proof_of_payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+    $stmt = $conn->prepare('INSERT INTO orders (firstName, lastName, email, phone, address, sub_total, grand_total, pmode, province, proof_of_payment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
     if ($stmt === false) {
         throw new Exception('Failed to prepare order insertion statement: ' . $conn->error);
     }
-    $stmt->bind_param('sssssddsss', $firstName, $lastName, $email, $contact, $address, $subtotal, $total, $paymentMode, $orderNote, $proofOfPayment);
+    $stmt->bind_param('sssssddsss', $firstName, $lastName, $email, $contact, $address, $subtotal, $total, $paymentMode, $province, $proofOfPayment);
     $stmt->execute();
     $orderId = $stmt->insert_id;
 

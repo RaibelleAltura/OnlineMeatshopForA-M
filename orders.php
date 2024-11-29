@@ -488,8 +488,8 @@ include_once ('footer.html');
                                     <div><p>${new Date(order.order_date).toLocaleString()}</p></div>
                                 </div>
                                 <div class="customer-details">
-                                    <div><p><strong>Order Note: </strong></p></div>
-                                    <div><p>${order.note || 'Null'}</p></div>
+                                    <div><p><strong>Province: </strong></p></div>
+                                    <div><p>${order.province || 'Null'}</p></div>
                                 </div>
                             </div>
                             <div class="order-items" style="font-size: 1.1rem;">
