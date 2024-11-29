@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2024 at 05:51 PM
+-- Generation Time: Nov 29, 2024 at 02:52 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -193,7 +193,7 @@ CREATE TABLE `reservations` (
   `name` varchar(255) NOT NULL,
   `contact` varchar(10) NOT NULL,
   `noOfBox` int(50) NOT NULL,
-  `reservedTime` time NOT NULL,
+  `typeOfProduct` varchar(255) NOT NULL,
   `reservedDate` date NOT NULL,
   `reservedAt` timestamp NOT NULL DEFAULT current_timestamp(),
   `status` enum('Pending','On Process','Completed','Cancelled') NOT NULL DEFAULT 'Pending',
@@ -204,10 +204,29 @@ CREATE TABLE `reservations` (
 -- Dumping data for table `reservations`
 --
 
-INSERT INTO `reservations` (`email`, `name`, `contact`, `noOfBox`, `reservedTime`, `reservedDate`, `reservedAt`, `status`, `reservation_id`) VALUES
+INSERT INTO `reservations` (`email`, `name`, `contact`, `noOfBox`, `typeOfProduct`, `reservedDate`, `reservedAt`, `status`, `reservation_id`) VALUES
 ('altura@gmail.com', 'Raibelle ', '0921594311', 20, '00:00:15', '2025-05-06', '2024-11-23 07:39:07', 'Pending', 18),
 ('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '00:00:10', '2024-11-28', '2024-11-28 02:53:17', 'Pending', 19),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 100, '00:00:09', '2024-11-28', '2024-11-28 13:40:45', 'Pending', 20);
+('raibelle@gmail.com', 'Raibelle', '0921594311', 100, '00:00:09', '2024-11-28', '2024-11-28 13:40:45', 'Pending', 20),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '0', '2024-11-29', '2024-11-28 19:30:26', 'Pending', 21),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 30, '0', '2024-11-29', '2024-11-28 19:30:46', 'Pending', 22),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 100, '0', '2024-11-29', '2024-11-28 19:35:08', 'Pending', 23),
+('ra.altura@gmail.com', 'Raibelle ', '0945841233', 20, '0', '2024-11-29', '2024-11-28 19:40:15', 'Pending', 24),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '0', '2024-11-30', '2024-11-28 19:42:31', 'Pending', 25),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 2, '0', '2024-11-29', '2024-11-28 19:46:00', 'Pending', 26),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '0', '2024-11-29', '2024-11-28 19:50:20', 'Pending', 27),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 3, '0', '2024-11-29', '2024-11-28 19:54:31', 'Pending', 28),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '0', '2024-11-29', '2024-11-29 01:23:49', 'Pending', 29),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 10, '0', '2024-11-29', '2024-11-29 01:29:28', 'Pending', 30),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 1, '0', '2024-11-29', '2024-11-29 01:33:52', 'Pending', 31),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 2, '0', '2024-11-29', '2024-11-29 01:41:41', 'Pending', 32),
+('Chicken Wings', 'raibelle@gmail.com', 'Raibelle', 921594311, '1', '2024-11-29', '2024-11-29 01:44:18', 'Pending', 33),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 2, '0', '2024-11-29', '2024-11-29 01:44:55', 'Pending', 34),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 0, '3', '2024-11-29', '2024-11-29 01:46:51', 'Pending', 35),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 10, '0', '2024-11-29', '2024-11-29 01:47:30', 'Pending', 36),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 23, 'Tripe', '2024-11-29', '2024-11-29 01:49:20', 'Pending', 37),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 100, 'Steak', '2024-11-29', '2024-11-29 01:50:39', 'Pending', 38),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 50, 'Siomai', '2024-11-29', '2024-11-29 01:50:59', 'Pending', 39);
 
 -- --------------------------------------------------------
 
@@ -388,7 +407,7 @@ ALTER TABLE `order_items`
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `reviews`
