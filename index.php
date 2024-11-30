@@ -102,10 +102,10 @@ $conn->close();
             <h2>Welcome to <span style="color: #fb4a36;"> April and Marc Frozen Meat Trading</span></h2>
             <h4 style="color: gray; font-weight: 450;">"Let me Meat your Needs"</h4>
             <p style="font-size: 18px; text-align: justify;">
-"At April and Marc Frozen Meat Trading, we bring you premium, 
-responsibly sourced frozen meats that elevate every meal. Whether you're preparing a quick
- weekday dinner or a feast for special occasions, our selection is crafted to deliver top-quality
-  flavors with every bite. Make every meal memorable with us!"
+            At April and Marc Frozen Meat Trading, we are dedicated to providing premium frozen meats that help businesses thrive. Whether you run a restaurant, catering service, or retail store, our top-quality products are sourced to meet your demands with consistency and reliability.
+            <br>
+            <br>
+From small orders to bulk supplies, we ensure that every delivery is handled with professionalism and care, helping you focus on growing your business. Partner with us today, and let’s achieve success together—one trusted supply at a time!
             </p>
             <div class="buttondiv">
               <div>
@@ -327,9 +327,9 @@ responsibly sourced frozen meats that elevate every meal. Whether you're prepari
         </div>
         <div class="story-content row mb-2">
           <div class="story-text col-lg-6 col-md-6 col-sm-12 reveal mt-2" data-aos="fade-up" data-os-interval="300">
-            <p>At <strong>April and Marc Frozen Meat Trading</strong>, Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-            <p>Founded in [2018], April and Marc Frozen Meat Trading  It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source.</p>
+            <p>Hi! <strong>Welcome to April and Marc Frozen Meat Trading</strong>, where we’ve been proudly "Meating" your needs since 2018! Starting from a small shop, we built our business on the belief that quality matters. Our goal is simple: to deliver premium frozen meat products that bring exceptional taste and value to your business.</p>
+            <p>With our tagline, "Let me Meat your Needs," we’re committed to being your trusted partner in providing top-quality meats that elevate every dish and delight every customer.</p>
+            <p>At April and Marc Frozen Meat Trading, we believe that success starts with strong partnerships and the satisfaction of our customers. Let us be part of your journey to success. Together, we’ll make every meal extraordinary.</p>
             <a href="menu.php" class="about_btn">
               <i class="fa-solid fa-burger"></i>Order Now
             </a>
