@@ -268,8 +268,7 @@ From small orders to bulk supplies, we ensure that every delivery is handled wit
 
       <!-- Top picks section -->
       <div class="popular reveal" data-aos="fade-up">
-        <h1 class="text-center mt-3">OUR <span>TOP PICKS</span></h1>
-        <P class="text-center" style="font-size: 1.3rem;">~Handpicked meals that are a hit with everyone.</P>
+        <h1 class="text-center mt-3">OUR <span>BEST SELLERS</span></h1>
 
         <div id="cardCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="8000" data-aos="fade-up">
           <div class="carousel-inner">
