@@ -292,7 +292,6 @@ From small orders to bulk supplies, we ensure that every delivery is handled wit
                 echo '<div class="card-body">';
                 echo '<h5 class="card-title text-center">' . $item['itemName'] . '</h5>';
                 echo '<p class="card-text text-center">₱ ' . $item['price'] . '</p>';
-                echo '<a class="button-cart" onclick="addToCart()">Add to Cart</a>';
                 echo '</div>';
                 echo '</div>';
               }
