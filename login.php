@@ -7,7 +7,8 @@
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="login.css" />
-    <title>Login/Register</title>
+    <link rel="icon"  type="image/jpg" href="favic.jpg">
+    <title>April and Marc Frozen Meat Trading | Login/Register</title>
     <style>
        /* Eye Toggle Icon Styles */
        .input-field .fa-eye,
@@ -161,19 +162,38 @@
                         <input type="password" id="loginPassword" placeholder="Password" name="password" required onkeyup="hideAlertBox()" />
                         <i class="fas fa-eye-slash" id="toggleLoginPassword" style="cursor: pointer;"></i>
                     </div>
-                    <p class="terms">
+
+                    <div class="mt-3 mb-1" style="display: flex; align-items: center;">
+                        <a href="reset_password.php" style="text-decoration: none; color: #007BFF; margin-right: 10px;">Forgot Password?</a>
+
+                        <p style="margin: 0; padding-left: 10px; margin-left: 20px; font-size: 13px;">
+                            Don't have an account? 
+                            <a href="javascript:void(0);" class="transparent" id="sign-up-btn" style="color: #007bff; text-decoration: none; font-weight: bold;">
+                                Sign up
+                            </a>
+                        </p>
+
+                    </div>
+                    <div class="button mb-2">
+                        <input type="submit" value="Login" class="submit solid" id="loginButton" style="float: left; width: 380px;" />
+                    </div>
+
+
+
+
+
+                    <p style="font-size: 16px; color: #333; line-height: 1.5; margin: 20px; font-size: 14px; margin-top: -0px;">
                         By signing in, you agree to our 
-                        <a href="javascript:void(0);" onclick="openModal('termsModal')">Terms and Conditions</a>.
+                        <a href="javascript:void(0);" onclick="openModal('termsModal')" style="color: #007bff; text-decoration: none; font-weight: bold;">
+                            Terms and Conditions
+                        </a>.
                     </p>
                     <p class="privacy-policy">
                         <a href="javascript:void(0);" onclick="openModal('privacyModal')">Privacy Policy</a>
                     </p>
-                            <a href="reset_password.php" style="text-decoration: none; color: #007BFF;">Forgot Password?</a>
 
-                    <input type="submit" value="Login" class="submit solid" id="loginButton" />
-                    <button class="btn transparent" id="sign-up-btn">
-                        Sign up
-                    </button>
+
+
 
                     <?php
                     if (isset($_GET['error'])) {
