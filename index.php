@@ -224,11 +224,11 @@ From small orders to bulk supplies, we ensure that every delivery is handled wit
         </div>
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 d-flex flex-column justify-content-center reveal" data-aos="fade-up">
           <h1>WHY <span>CHOOSE US?</span></h1>
-          <p class="content">Our STORE offers the best food delivery service with fresh and high-quality ingredients.</p>
+          <p class="content">" Our SHOP offers the best quality meats to MEAT your NEEDS "</p>
           <ul class="why-choose-us-list">
             <li data-aos="fade-up">
               <div class="image-wrapper mt-1">
-                <img src="icons/delivery-man.png" alt="Fast Delivery">
+                <img src="icons/truck.png" alt="Fast Delivery">
               </div>
               <div class="feature-content">
                 <h4>Fast Delivery</h4>
@@ -237,16 +237,16 @@ From small orders to bulk supplies, we ensure that every delivery is handled wit
             </li>
             <li data-aos="fade-up">
               <div class="image-wrapper">
-                <img src="icons/vegetables.png" alt="Fresh Ingredients">
+                <img src="icons/meat.png" alt="Fresh Ingredients">
               </div>
               <div class="feature-content">
-                <h4>Fresh Ingredients</h4>
-                <p>We use only the freshest and highest quality ingredients.</p>
+                <h4>Quality Meats</h4>
+                <p>We use only the freshest and highest quality meats.</p>
               </div>
             </li>
             <li data-aos="fade-up">
               <div class="image-wrapper">
-                <img src="icons/waiter (1).png" alt="Friendly Service" class="why-us-image">
+                <img src="icons/staff.png" alt="Friendly Service" class="why-us-image">
               </div>
               <div class="feature-content">
                 <h4>Friendly Service</h4>
@@ -255,11 +255,11 @@ From small orders to bulk supplies, we ensure that every delivery is handled wit
             </li>
             <li data-aos="fade-up">
               <div class="image-wrapper">
-                <img src="icons/tasty.png" alt="Exceptional Taste">
+                <img src="icons/price.png" alt="Exceptional Taste">
               </div>
               <div class="feature-content">
-                <h4>Exceptional Taste</h4>
-                <p>Indulge in flavors that are truly exceptional.</p>
+                <h4>Affordable Prices</h4>
+                <p>Enjoy premium meats at competitive prices with no compromise on quality.</p>
               </div>
             </li>
           </ul>
