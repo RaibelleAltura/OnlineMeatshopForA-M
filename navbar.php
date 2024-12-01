@@ -269,7 +269,6 @@
               <li class="nav-item">
                 <a class="nav-link mx-lg-2 <?php echo $current_page == 'index.php#Reservation' ? 'active' : ''; ?>" href="index.php#Reservation">Reservation</a>
               </li>
-              
             </ul>
           </div>
         </div>
@@ -343,7 +342,7 @@
 
           removeActiveClasses();
 
-          if (currentSection === "Reservation" || currentSection === "About-Us" || currentSection === "review") {
+          if (currentSection === "Reservation" || currentSection === "About-Us" || currentSection === "home") {
             const activeLink = document.querySelector(`.navbar-nav a[href*="${currentSection}"]`);
             if (activeLink) {
               activeLink.classList.add("active");

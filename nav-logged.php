@@ -420,7 +420,7 @@ $userinfo = get_UserInfo($useremail);
 
           removeActiveClasses();
 
-          if (currentSection === "Reservation" || currentSection === "About-Us" || currentSection === "review") {
+          if (currentSection === "Reservation" || currentSection === "About-Us" || currentSection === "home") {
             const activeLink = document.querySelector(`.navbar-nav a[href*="${currentSection}"]`);
             if (activeLink) {
               activeLink.classList.add("active");

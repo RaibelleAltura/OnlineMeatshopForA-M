@@ -167,16 +167,31 @@ p {
 
     </style>
 </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Password</title>
+</head>
 <body>
-    <form action="reset_password.php" method="POST">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        <label for="new_password">New Password:</label>
-        <input type="password" id="new_password" name="new_password" required>
-        <label for="confirm_password">Confirm Password:</label>
-        <input type="password" id="confirm_password" name="confirm_password" required>
-        <button type="submit">Reset Password</button>
-    </form>
+    <div class="form-container">
+        <form action="reset_password.php" method="POST">
+            <h2>Forgot Your Password?</h2> <!-- Place the heading above the form fields -->
+            
+            <label for="email">Enter your Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            
+            <label for="new_password">New Password:</label>
+            <input type="password" id="new_password" name="new_password" required><br>
+            
+            <label for="confirm_password">Confirm New Password:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required><br>
+            
+            <button type="submit">Reset Password</button>
+        </form>
+    </div>
+
 
     <!-- Success Modal -->
     <div id="successModal" class="modal">
