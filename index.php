@@ -215,56 +215,52 @@ From small orders to bulk supplies, we ensure that every delivery is handled wit
 
   </div>
 
-  <!-- Why Choose Us Section  -->
-  <section class="why-choose-us" id="why-choose-us">
-    <div class="container">
-      <div class="row why-us-content">
-        <div class="col-md-12 col-lg-6 col-sm-12 col-xs-12 mt-5 reveal d-flex justify-content-start align-items-start" data-aos="fade-up">
-          <img src="images/logo1.png" width="100%" height="auto" loading="lazy" alt="delivery boy" class="w-100 delivery-img" data-delivery-boy>
+  <!-- Why Choose Us Section -->
+<section class="why-choose-us" id="why-choose-us" style="display: flex; justify-content: center; align-items: center; height: 100vh; text-align: center; background-color: #ffe4c2;">
+  <div class="container" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <h1 style="margin-bottom: 20px; font-size: 2.5rem; color: #333;">WHY <span style="color: #fb4a36;">CHOOSE US?</span></h1>
+    <p class="content" style="font-size: 1.2rem; color: #555; margin-bottom: 30px;">" Our SHOP offers the best quality meats to MEAT your NEEDS "</p>
+    <ul class="why-choose-us-list" style="list-style-type: none; padding: 0;">
+      <li style="display: flex; align-items: center; margin-bottom: 1.5rem; max-width: 600px;">
+        <div class="image-wrapper mt-1" style="margin-right: 15px;">
+          <img src="icons/truck.png" alt="Fast Delivery" style="width: 50px; height: 50px;">
         </div>
-        <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 d-flex flex-column justify-content-center reveal" data-aos="fade-up">
-          <h1>WHY <span>CHOOSE US?</span></h1>
-          <p class="content">" Our SHOP offers the best quality meats to MEAT your NEEDS "</p>
-          <ul class="why-choose-us-list">
-            <li data-aos="fade-up">
-              <div class="image-wrapper mt-1">
-                <img src="icons/truck.png" alt="Fast Delivery">
-              </div>
-              <div class="feature-content">
-                <h4>Fast Delivery</h4>
-                <p>Enjoy prompt and reliable delivery to your doorstep.</p>
-              </div>
-            </li>
-            <li data-aos="fade-up">
-              <div class="image-wrapper">
-                <img src="icons/meat.png" alt="Fresh Ingredients">
-              </div>
-              <div class="feature-content">
-                <h4>Quality Meats</h4>
-                <p>We use only the freshest and highest quality meats.</p>
-              </div>
-            </li>
-            <li data-aos="fade-up">
-              <div class="image-wrapper">
-                <img src="icons/staff.png" alt="Friendly Service" class="why-us-image">
-              </div>
-              <div class="feature-content">
-                <h4>Friendly Service</h4>
-                <p>Experience warm and welcoming customer service.</p>
-              </div>
-            </li>
-            <li data-aos="fade-up">
-              <div class="image-wrapper">
-                <img src="icons/price.png" alt="Exceptional Taste">
-              </div>
-              <div class="feature-content">
-                <h4>Affordable Prices</h4>
-                <p>Enjoy premium meats at competitive prices with no compromise on quality.</p>
-              </div>
-            </li>
-          </ul>
+        <div class="feature-content">
+          <h4 style="margin: 0; font-size: 1.3rem; font-weight: bold;">Fast Delivery</h4>
+          <p style="margin: 0; font-size: 1rem; color: #555;">Enjoy prompt and reliable delivery to your doorstep.</p>
         </div>
-      </div>
+      </li>
+      <li style="display: flex; align-items: center; margin-bottom: 1.5rem; max-width: 600px;">
+        <div class="image-wrapper" style="margin-right: 15px;">
+          <img src="icons/meat.png" alt="Fresh Ingredients" style="width: 50px; height: 50px;">
+        </div>
+        <div class="feature-content">
+          <h4 style="margin: 0; font-size: 1.3rem; font-weight: bold;">Quality Meats</h4>
+          <p style="margin: 0; font-size: 1rem; color: #555;">We use only the freshest and highest quality meats.</p>
+        </div>
+      </li>
+      <li style="display: flex; align-items: center; margin-bottom: 1.5rem; max-width: 600px;">
+        <div class="image-wrapper" style="margin-right: 15px;">
+          <img src="icons/staff.png" alt="Friendly Service" class="why-us-image" style="width: 50px; height: 50px;">
+        </div>
+        <div class="feature-content">
+          <h4 style="margin: 0; font-size: 1.3rem; font-weight: bold;">Friendly Service</h4>
+          <p style="margin: 0; font-size: 1rem; color: #555;">Experience warm and welcoming customer service.</p>
+        </div>
+      </li>
+      <li style="display: flex; align-items: center; margin-bottom: 1.5rem; max-width: 600px;">
+        <div class="image-wrapper" style="margin-right: 15px;">
+          <img src="icons/price.png" alt="Exceptional Taste" style="width: 50px; height: 50px;">
+        </div>
+        <div class="feature-content">
+          <h4 style="margin: 0; font-size: 1.3rem; font-weight: bold;">Affordable Prices</h4>
+          <p style="margin: 0; font-size: 1rem; color: #555;">Enjoy premium meats at competitive prices with no compromise on quality.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
 
       <!-- Top picks section -->
       <div class="popular reveal" data-aos="fade-up">
@@ -337,8 +333,8 @@ From small orders to bulk supplies, we ensure that every delivery is handled wit
     </section>
   </div>
 
-  <!-- Table Reservation -->
-  <section class="table-reservation" id="Reservation">
+   <!-- Table Reservation -->
+   <section class="table-reservation" id="Reservation">
     <div class="row text-center ms-4" data-aos="fade-up">
       <h1 class="mb-2">ORDER <span style="color: #fb4a36;">RESERVATION</span></h1>
       <h5 class="mb-5">Book your orders here!</h5>
@@ -351,11 +347,17 @@ From small orders to bulk supplies, we ensure that every delivery is handled wit
         <div class="reservation-section col-lg-5 col-md-6 col-sm-12">
           <h2 style="background-color: #feead4;">Reserve Now!</h2>
           <form id="reservation-form" action="reservations.php" method="POST">
-          <div class="form-row">
+            <div class="form-row">
               <div class="form-group">
-                <label for="name">Name:</label>
-                <input type="text" class="form-control" id="firstName" name="firstName" value="<?= htmlspecialchars($firstName) ?>" required>
+                <label for="firstName">First Name:</label>
+                <input type="text" class="form-control" id="firstName" name="firstName"  value="<?= htmlspecialchars($firstName ?? '') ?>" required>
               </div>
+              <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" class="form-control" id="lastName" name="lastName" value="<?= htmlspecialchars($lastName ?? '') ?>" required>
+              </div>
+            </div>
+            <div class="form-row">
               <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" class="form-control" id="email" name="email" value="<?= htmlspecialchars($email) ?>" readonly>
@@ -373,9 +375,22 @@ From small orders to bulk supplies, we ensure that every delivery is handled wit
             </div>
             <div class="form-row">
               <div class="form-group">
-                <label for="typeOfProduct">Type of Product</label>
-                <input type="text" id="product" name="typeOfProduct" required>
+                <label for="typeOfProduct">Type of Product:</label>
+                <select id="typeOfProduct" name="typeOfProduct" class="form-control" required>
+                  <option value="">Select Type</option>
+                  <option value="pork">Pork</option>
+                  <option value="chicken">Chicken</option>
+                  <option value="beef">Beef</option>
+                </select>
               </div>
+              <div class="form-group">
+                <label for="specificProduct">Specific Product:</label>
+                <select id="specificProduct" name="specificProduct" class="form-control" required>
+                  <option value="">Select Specific Product</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
               <div class="form-group">
                 <label for="box">Quantity of Box:</label>
                 <input type="number" id="box" name="noOfBox" required min="1">
@@ -387,6 +402,73 @@ From small orders to bulk supplies, we ensure that every delivery is handled wit
       </div>
     </div>
   </section>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Product types with their specific products
+    const products = {
+      'beef': [
+        'Beef Tripe (Tuwalya)',
+        'Beef Shank (Bulalo)',
+        'Beef Forequarter'
+      ],
+      'pork': [
+        'Pork Hamleg (Ham)',
+        'Pork Back Fat Skin',
+        'Pork Back Fat Skinless',
+        'Pork Belly Biso',
+        'Pork Belly Skin',
+        'Pork Belly',
+        'Pork Cutting Fats',
+        'Pork Ear (Tenga)',
+        'Pork Flower (Bulaklak)',
+        'Pork Heart',
+        'Pork Jowls',
+        'Pork Liver',
+        'Pork Lungs (Baga)',
+        'Pork Mask (Maskara)',
+        'Pork Pata',
+        'Pork Picnic Shoulder',
+        'Pork Riblets',
+        'Pork Trimmings',
+        'Pork Loin (LOMO)',
+        'Pork Loin (Pork Chop)'
+      ],
+      'chicken': [
+        'Chicken Wings',
+        'Chicken Drumstick',
+        'Chicken Liver',
+        'Chicken Drummets',
+        'Chicken Breast Fillet',
+        'Chicken MDM',
+        'Chicken Skin'
+      ]
+    };
+
+    // Add event listener to the Type of Product dropdown
+    document.getElementById('typeOfProduct').addEventListener('change', function () {
+      const productType = this.value; // Get the selected product type
+      const specificProductDropdown = document.getElementById('specificProduct');
+
+      // Clear the specific product dropdown
+      specificProductDropdown.innerHTML = '<option value="">Select Specific Product</option>';
+
+      // Populate specific products based on selected product type
+      if (productType && products[productType]) {
+        const productList = products[productType];
+
+        // Add options to the specific product dropdown
+        productList.forEach(function (product) {
+          const option = document.createElement('option');
+          option.value = product;
+          option.textContent = product;
+          specificProductDropdown.appendChild(option);
+        });
+      }
+    });
+  });
+</script>
+
 
 
 

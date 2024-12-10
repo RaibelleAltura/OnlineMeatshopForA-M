@@ -354,9 +354,10 @@ $userinfo = get_UserInfo($useremail);
           <a href="#" class="dropdown-toggle" id="profileDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="uploads/<?php echo htmlspecialchars($userinfo['profile_image']); ?>" alt="Profile Picture" class="nav-profile">
           </a>
-          <ul class="dropdown-menu" aria-labelledby="profileDropdown" style="margin-left: -50px;">
+          <ul class="dropdown-menu" aria-labelledby="profileDropdown" style="margin-left: -40px;">
             <li><a class="dropdown-item" href="profile.php"><i class="fas fa-user-circle dropdown-icon"></i> Profile</a></li>
             <li><a class="dropdown-item" href="orders.php"><i class="fas fa-box dropdown-icon"></i> Orders</a></li>
+            <li><a class="dropdown-item" href="my_reservations.php"><i class="fas fa-calendar-check dropdown-icon"></i> Reservations</a></li>  
             <li><a class="dropdown-item" href="logout.php"><i class="fas fa-sign-out-alt dropdown-icon"></i> Logout</a></li>
           </ul>
         </li>

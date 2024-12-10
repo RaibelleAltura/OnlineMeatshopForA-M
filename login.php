@@ -75,17 +75,22 @@
         }
 
         /* Left column for the logo */
-        .logo-container {
-            flex: 1;
-            display: flex;
-            justify-content: left;
-            align-items: left;
-        }
+.logo-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: flex-start; /* Align logo at the top */
+    width: auto;
+}
 
-        .logo-container img {
-            max-width: 60%; /* Adjust size as needed */
-            max-height: 50%;
-        }
+.logo-container img {
+    max-width: 60%; /* Adjust size as needed */
+    max-height: 50%;
+}
+
 
         /* Right column for the form */
         .form-container {
@@ -146,7 +151,7 @@
     </div>
     <div class="container">
     <div class="logo-container">
-            <img src="images/logo.jpg" alt="Logo">
+            <img src="images/logo1.png" alt="Logo">
         </div> 
         <div class="forms-container">
             <div class="signin-signup">

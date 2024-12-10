@@ -273,6 +273,7 @@
           </div>
         </div>
         <a class="nav-link cart <?php echo $current_page == 'cart.php' ? 'active' : ''; ?>" href="cart.php"><i class="fas fa-shopping-cart"></i> <span id="cart-item" class="badge badge-danger"></span></a>
+        
 
         <a href="login.php">
           <button class="Btn ms-3">

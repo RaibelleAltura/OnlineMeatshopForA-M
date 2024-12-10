@@ -179,8 +179,9 @@ include 'sidebar.php';
             <th>Name</th>
             <th>Contact</th>
             <th>Number Of Boxes</th>
+            <th>Type of Meat</th>
+            <th>Specific Meat</th>
             <th>Reserved Date</th>
-            <th>Type of Product</th>
             <th>Status</th>
             <th>Action</th>
           </tr>
@@ -197,8 +198,9 @@ include 'sidebar.php';
       <td>{$row['name']}</td>
       <td>{$row['contact']}</td>
       <td>{$row['noOfBox']}</td>
-      <td>{$row['reservedDate']}</td>
       <td>{$row['typeOfProduct']}</td>
+      <td>{$row['specificProduct']}</td>
+      <td>{$row['reservedDate']}</td>
       <td>
         <select id='status-{$row['reservation_id']}' onchange=\"updateStatus('{$row['reservation_id']}', this.value)\" class='status-select'>
           <option value='Pending' " . ($row['status'] == 'Pending' ? 'selected' : '') . ">Pending</option>

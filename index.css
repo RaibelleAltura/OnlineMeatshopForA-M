@@ -265,10 +265,20 @@ body {
 .why-choose-us {
   padding: 60px 0;
   background-color: #ffe4c2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 0px; /* Full viewport height */
+  text-align: center; /* Ensures content is aligned properly */
 }
 
 .why-choose-us .content {
   padding: 10px;
+  margin: 0 auto; /* Centers the content horizontally */
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping for smaller screens */
+  justify-content: center; /* Centers flex items */
+  align-items: center; /* Aligns vertically */
 }
 
 .content h1 {
@@ -279,16 +289,6 @@ body {
 .popular h1 span {
   color: #fb4a36;
 }
-
-
-
-
-.why-choose-us .delivery-img {
-  max-width: 100%;
-  height: auto;
-}
-
-
 
 .popular-items {
   padding: 20px 0;

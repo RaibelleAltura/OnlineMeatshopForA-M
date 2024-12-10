@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2024 at 05:04 PM
+-- Generation Time: Dec 10, 2024 at 05:07 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `restaurant`
+-- Database: `meatshop`
 --
 
 -- --------------------------------------------------------
@@ -37,6 +37,13 @@ CREATE TABLE `cart` (
   `email` varchar(255) NOT NULL,
   `total_price` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `itemName`, `price`, `image`, `quantity`, `catName`, `email`, `total_price`) VALUES
+(156, 'Beef Shank', '300', 'beef Shank(Bulalo).webp', 1, 'Beef', 'raibelle@gmail.com', '300');
 
 -- --------------------------------------------------------
 
@@ -154,7 +161,8 @@ INSERT INTO `orders` (`order_id`, `email`, `firstName`, `lastName`, `phone`, `ad
 (77, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Batangas', 'Cash On Delivery', 'Pending', '300.00', '430.00', '2024-11-29 15:47:27', 'Pending', NULL, 'Batangas', NULL),
 (78, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Lipa City', 'Store Pick Up', 'Pending', '200.00', '330.00', '2024-11-29 15:52:46', 'Pending', NULL, 'Batangas', NULL),
 (79, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Infanta', 'Cash On Delivery', 'Pending', '200.00', '330.00', '2024-11-29 15:53:28', 'Pending', NULL, 'Quezon', NULL),
-(80, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Dasmarinas', 'Cash On Delivery', 'Pending', '300.00', '430.00', '2024-11-29 15:59:50', 'Pending', NULL, 'Cavite', NULL);
+(80, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Dasmarinas', 'Cash On Delivery', 'Pending', '300.00', '430.00', '2024-11-29 15:59:50', 'Pending', NULL, 'Cavite', NULL),
+(81, 'raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', 'Barangay Uno, Lipa City, Purok 3, 108', 'Cash On Delivery', 'Pending', '300.00', '430.00', '2024-11-29 16:14:17', 'Pending', NULL, 'Batangas', NULL);
 
 -- --------------------------------------------------------
 
@@ -188,7 +196,8 @@ INSERT INTO `order_items` (`id`, `order_id`, `itemName`, `image`, `quantity`, `p
 (154, 77, 'Pork Back Fat Skinless', 'Pork backfat Skinless.jpeg', 1, '300', '300.00'),
 (155, 78, 'Beef Tripe', 'Beef Tripe.jpg', 1, '200', '200.00'),
 (156, 79, 'Chicken Wings', 'Chicken Wings.jpg', 1, '200', '200.00'),
-(157, 80, 'Pork Back Fat Skin', 'Pork Backfat Skin.jfif', 1, '300', '300.00');
+(157, 80, 'Pork Back Fat Skin', 'Pork Backfat Skin.jfif', 1, '300', '300.00'),
+(158, 81, 'Pork Belly Biso', 'Pork Belly Biso.jpg', 1, '300', '300.00');
 
 -- --------------------------------------------------------
 
@@ -204,37 +213,42 @@ CREATE TABLE `reservations` (
   `typeOfProduct` varchar(255) NOT NULL,
   `reservedDate` date NOT NULL,
   `reservedAt` timestamp NOT NULL DEFAULT current_timestamp(),
-  `status` enum('Pending','On Process','Completed','Cancelled') NOT NULL DEFAULT 'Pending',
-  `reservation_id` int(11) NOT NULL
+  `status` enum('Pending','Approved','On Process','Completed','Cancelled') NOT NULL DEFAULT 'Pending',
+  `reservation_id` int(11) NOT NULL,
+  `specificProduct` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `reservations`
 --
 
-INSERT INTO `reservations` (`email`, `name`, `contact`, `noOfBox`, `typeOfProduct`, `reservedDate`, `reservedAt`, `status`, `reservation_id`) VALUES
-('altura@gmail.com', 'Raibelle ', '0921594311', 20, '00:00:15', '2025-05-06', '2024-11-23 07:39:07', 'Pending', 18),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '00:00:10', '2024-11-28', '2024-11-28 02:53:17', 'Pending', 19),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 100, '00:00:09', '2024-11-28', '2024-11-28 13:40:45', 'Pending', 20),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '0', '2024-11-29', '2024-11-28 19:30:26', 'Pending', 21),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 30, '0', '2024-11-29', '2024-11-28 19:30:46', 'Pending', 22),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 100, '0', '2024-11-29', '2024-11-28 19:35:08', 'Pending', 23),
-('ra.altura@gmail.com', 'Raibelle ', '0945841233', 20, '0', '2024-11-29', '2024-11-28 19:40:15', 'Pending', 24),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '0', '2024-11-30', '2024-11-28 19:42:31', 'Pending', 25),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 2, '0', '2024-11-29', '2024-11-28 19:46:00', 'Pending', 26),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '0', '2024-11-29', '2024-11-28 19:50:20', 'Pending', 27),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 3, '0', '2024-11-29', '2024-11-28 19:54:31', 'Pending', 28),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '0', '2024-11-29', '2024-11-29 01:23:49', 'Pending', 29),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 10, '0', '2024-11-29', '2024-11-29 01:29:28', 'Pending', 30),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 1, '0', '2024-11-29', '2024-11-29 01:33:52', 'Pending', 31),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 2, '0', '2024-11-29', '2024-11-29 01:41:41', 'Pending', 32),
-('Chicken Wings', 'raibelle@gmail.com', 'Raibelle', 921594311, '1', '2024-11-29', '2024-11-29 01:44:18', 'Pending', 33),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 2, '0', '2024-11-29', '2024-11-29 01:44:55', 'Pending', 34),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 0, '3', '2024-11-29', '2024-11-29 01:46:51', 'Pending', 35),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 10, '0', '2024-11-29', '2024-11-29 01:47:30', 'Pending', 36),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 23, 'Tripe', '2024-11-29', '2024-11-29 01:49:20', 'Pending', 37),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 100, 'Steak', '2024-11-29', '2024-11-29 01:50:39', 'Pending', 38),
-('raibelle@gmail.com', 'Raibelle', '0921594311', 50, 'Siomai', '2024-11-29', '2024-11-29 01:50:59', 'Pending', 39);
+INSERT INTO `reservations` (`email`, `name`, `contact`, `noOfBox`, `typeOfProduct`, `reservedDate`, `reservedAt`, `status`, `reservation_id`, `specificProduct`) VALUES
+('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '00:00:10', '2024-11-28', '2024-11-28 02:53:17', 'Pending', 19, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 100, '00:00:09', '2024-11-28', '2024-11-28 13:40:45', 'Pending', 20, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '0', '2024-11-29', '2024-11-28 19:30:26', 'Pending', 21, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 30, '0', '2024-11-29', '2024-11-28 19:30:46', 'Pending', 22, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 100, '0', '2024-11-29', '2024-11-28 19:35:08', 'Pending', 23, ''),
+('ra.altura@gmail.com', 'Raibelle ', '0945841233', 20, '0', '2024-11-29', '2024-11-28 19:40:15', 'Pending', 24, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '0', '2024-11-30', '2024-11-28 19:42:31', 'Pending', 25, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 2, '0', '2024-11-29', '2024-11-28 19:46:00', 'Pending', 26, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '0', '2024-11-29', '2024-11-28 19:50:20', 'Pending', 27, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 3, '0', '2024-11-29', '2024-11-28 19:54:31', 'Pending', 28, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 20, '0', '2024-11-29', '2024-11-29 01:23:49', 'Pending', 29, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 10, '0', '2024-11-29', '2024-11-29 01:29:28', 'Pending', 30, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 1, '0', '2024-11-29', '2024-11-29 01:33:52', 'Pending', 31, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 2, '0', '2024-11-29', '2024-11-29 01:41:41', 'Pending', 32, ''),
+('Chicken Wings', 'raibelle@gmail.com', 'Raibelle', 921594311, '1', '2024-11-29', '2024-11-29 01:44:18', 'Pending', 33, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 2, '0', '2024-11-29', '2024-11-29 01:44:55', 'Pending', 34, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 0, '3', '2024-11-29', '2024-11-29 01:46:51', 'Pending', 35, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 10, '0', '2024-11-29', '2024-11-29 01:47:30', 'Pending', 36, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 23, 'Tripe', '2024-11-29', '2024-11-29 01:49:20', 'Pending', 37, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 100, 'Steak', '2024-11-29', '2024-11-29 01:50:39', 'Pending', 38, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 50, 'Siomai', '2024-11-29', '2024-11-29 01:50:59', 'Pending', 39, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 20, 'Chicken Wings', '2024-11-30', '2024-11-29 16:20:59', 'Pending', 40, ''),
+('raibelle@gmail.com', 'Raibelle', '0921594311', 10, 'Porkchop', '2024-11-30', '2024-11-29 16:23:27', 'Pending', 41, ''),
+('raibelle@gmail.com', 'Raibelle Altura', '0921594311', 100, 'beef', '2024-12-11', '2024-12-10 16:00:22', 'Approved', 42, 'Beef Tripe (Tuwalya)'),
+('raibelle@gmail.com', 'Raibelle Altura', '0921594311', 100, 'pork', '2024-12-11', '2024-12-10 16:02:09', '', 43, 'Pork Mask (Maskara)'),
+('raibelle@gmail.com', 'Raibelle Altura', '0921594311', 35, 'chicken', '2024-12-11', '2024-12-10 16:03:06', 'Pending', 44, 'Chicken Wings');
 
 -- --------------------------------------------------------
 
@@ -277,7 +291,7 @@ CREATE TABLE `staff` (
 --
 
 INSERT INTO `staff` (`id`, `firstName`, `lastName`, `email`, `contact`, `role`, `password`, `createdAt`, `updatedAt`, `profile_image`) VALUES
-(7, 'Raibelle', 'Altura', 'openligths@gmail.com', '09215943111', 'superadmin', 'admin123', '2024-10-29 05:01:27', '2024-10-29 05:02:55', 'Screenshot 2022-06-21 160018.png'),
+(7, 'Raibelle', 'Altura', 'openligths@gmail.com', '09215943111', 'superadmin', '$2y$10$B4upGAzyLfZIx6s6v9WffuqEKIgHO6MxIFv7w8DvNjMfNy5OKjkGm', '2024-10-29 05:01:27', '2024-11-29 16:41:32', 'Screenshot 2022-06-21 160018.png'),
 (8, 'Stemart Kenji', 'Tobias', 'Stemart@gmail.com', '09215942580', 'superadmin', 'stermart123', '2024-10-29 07:56:26', '2024-10-29 07:56:26', 'default.jpg'),
 (13, 'John', 'Doe', 'admin@example.com', '1234567890', 'admin', '1', '2024-11-21 11:51:25', '2024-11-21 12:07:40', '1.jpg'),
 (15, 'John', 'Doe', 'admin1@example.com', '1234567890', 'admin', '1234', '2024-11-21 11:55:21', '2024-11-21 11:55:21', 'default.jpg'),
@@ -306,11 +320,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`email`, `firstName`, `lastName`, `contact`, `password`, `dateCreated`, `profile_image`) VALUES
+('1@gmail.com', 'Raibelle', 'sdasd', '1', '$2y$10$9MezLIpvAndEohxIpSAWc.PvvQgMd/ujzvP048MPO8q0dxBl8Hx2G', '2024-11-30 09:00:10', 'default.jpg'),
 ('cyxdev24@gmail.com', 'Cyrus', 'Maylan', '0944747433', '$2y$10$36RYa3DN5Ifw3DLu/PqkmukNXzsEtIN3aqOOFNPnR6CvfEbPXEEBW', '2024-11-21 11:30:11', 'default.jpg'),
 ('fpj@gmail.com', 'Fernando', 'Poe', '123456789', '$2y$10$XWiBu3dYGYr.6Zsxw53L9elgY7OgQgsIUYTiLt8dbYMN3yuOnM/j.', '2024-11-28 16:46:18', 'default.jpg'),
+('Julyan@gmail.com', 'Julyan', 'Quizon', '0939875969', '$2y$10$vZ8WKOecnDjXXm79mKrHV.fBTBZunFBykfuUD8th/z61ziw/6RZ.e', '2024-11-29 16:27:55', 'default.jpg'),
 ('Mrbeast@gmail.com', 'Hype', 'Beast', '1234567890', '$2y$10$Ls/n2HfEuvutRb1J8fDH8OEf20uFbBeiHBHCqDEj7b7rKPxxTWMAe', '2024-11-28 15:02:05', 'default.jpg'),
 ('ngek@gmail.com', 'Ryan', 'Altura', '0921594311', '$2y$10$2ykjxf.7nETcw6o/gDiFWOW0iVoKErk9MkVyiRKxise3efAc/NtwK', '2024-11-28 14:46:17', 'default.jpg'),
-('raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', '$2y$10$NY5GWz1l7Q62PMc/E1rCneco/p1FaHdm5YhhK1UOH3JsQtQRlVF3G', '2024-11-23 07:09:53', 'default.jpg');
+('raibelle@gmail.com', 'Raibelle', 'Altura', '0921594311', '$2y$10$oT6fbYOejwAP.r0PewXXFOnrR0MWMaKsVMPRF8up/4IRxSTx0IM1q', '2024-11-23 07:09:53', 'default.jpg');
 
 --
 -- Indexes for dumped tables
@@ -384,7 +400,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=157;
 
 --
 -- AUTO_INCREMENT for table `menucategory`
@@ -402,19 +418,19 @@ ALTER TABLE `menuitem`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=159;
 
 --
 -- AUTO_INCREMENT for table `reservations`
 --
 ALTER TABLE `reservations`
-  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `reservation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `reviews`
